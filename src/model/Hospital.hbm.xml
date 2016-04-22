@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="model">
+	<class name="Hospital" table="hospital">
+		<id name="id" type="java.lang.String">
+			<generator class="uuid" />
+		</id>
+		<property name="name" column="name" type="java.lang.String" />
+		<set name="departments" inverse="true">
+			<key column="hospital_id" />
+			<one-to-many class="Department" />
+		</set>
+	</class>
+</hibernate-mapping>
