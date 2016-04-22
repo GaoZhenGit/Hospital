@@ -13,10 +13,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import model.Department;
-import model.Doctor;
 import model.Hospital;
-import model.Patient;
-import model.Person;
 
 /**
  * Servlet implementation class RegisterServlet
