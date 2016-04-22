@@ -27,5 +27,7 @@
 		<mapping resource="model/Doctor.hbm.xml"/>
 		<mapping resource="model/Department.hbm.xml"/>
 		<mapping resource="model/Hospital.hbm.xml"/>
+		<mapping resource="model/Title.hbm.xml"/>
+		<mapping resource="model/Registration.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>
