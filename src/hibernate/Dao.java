@@ -10,7 +10,9 @@ import org.hibernate.criterion.Restrictions;
 
 public class Dao {
 
+	
 	public static <T> T getByName(String name, Class<T> clazz) {
+		//通过名字查询类
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(clazz);
@@ -26,6 +28,7 @@ public class Dao {
 	}
 
 	public static <T> List<T> queryByField(String field, String value, Class<T> clazz) {
+		//根据字段查询类
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(clazz);
@@ -36,6 +39,7 @@ public class Dao {
 	}
 
 	public static void save(Object... tList) throws Exception {
+		//同一事务下保存一个或多个对象
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -49,6 +53,7 @@ public class Dao {
 	}
 
 	public static <T> void delete(T t) throws Exception {
+		//删除特定对象
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
