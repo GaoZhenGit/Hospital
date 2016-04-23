@@ -10,8 +10,10 @@
 		<property name="age" column="age" type="int" />
 		<property name="sex" column="sex" type="int" />
 		<property name="workAge" column="work_age" type="int" />
-		<property name="description" column="description" type="java.lang.String"/>
+		<property name="description" column="description" type="java.lang.String" />
 		<many-to-one name="department" class="Department" column="department_id"
+			not-null="true" />
+		<many-to-one name="title" class="Title" column="title_id"
 			not-null="true" />
 	</class>
 </hibernate-mapping>
