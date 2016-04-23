@@ -56,6 +56,7 @@ public class RegisterServlet extends HttpServlet {
 		department2.setHospital(hospital);
 		
 		Title title1 = new Title();
+		title1.setId("1");
 		title1.setFee(20);
 		title1.setName("教授");
 		

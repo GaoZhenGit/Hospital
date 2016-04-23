@@ -4,7 +4,7 @@
 <hibernate-mapping package="model">
 	<class name="Title" table="title">
 		<id name="id" type="java.lang.String">
-			<generator class="uuid" />
+			<generator class="assigned" />
 		</id>
 		<property name="name" column="name" type="java.lang.String" />
 		<property name="fee" column="fee" type="int" />
