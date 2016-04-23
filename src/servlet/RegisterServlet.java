@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import hibernate.Dao;
 import model.Department;
 import model.Doctor;
 import model.Hospital;
@@ -34,10 +35,10 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		SessionFactory sessionFactory = hibernate.Factory.get();
-		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
+		response.getWriter().append("Served at: ").append(request.getContextPath()).append("\n");
+//		SessionFactory sessionFactory = hibernate.Factory.get();
+//		Session session = sessionFactory.openSession();
+//		Transaction transaction = session.beginTransaction();
 		
 		Hospital hospital = new Hospital();
 		hospital.setName("协和医院");
@@ -81,18 +82,23 @@ public class RegisterServlet extends HttpServlet {
 		registration.setTimeQuantum(timeQuantum);
 		registration.setPatient(patient);
 		
-		session.save(hospital);
-		session.save(hospital2);
-		session.save(department1);
-		session.save(department2);
-		session.save(title1);
-		session.save(doctor1);
-		session.save(patient);
-		session.save(timeQuantum);
-		session.save(registration);
 		
-		transaction.commit();
-		session.close();
+		try {
+			Dao.save(hospital,
+					hospital2,
+					department1,
+					department2,
+					title1,
+					doctor1,
+					patient,
+					timeQuantum,
+					registration);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Hospital hospital3 = Dao.getByName("协和医院", Hospital.class);
+		response.getWriter().append(hospital3.getId()).append(hospital3.getName());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
