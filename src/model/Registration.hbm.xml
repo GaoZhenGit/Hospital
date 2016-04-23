@@ -10,5 +10,7 @@
 			not-null="true" />
 		<many-to-one name="patient" class="Patient" column="patient_id"
 			not-null="true" />
+		<many-to-one name="timeQuantum" class="TimeQuantum"
+			column="time_id" not-null="true" />
 	</class>
 </hibernate-mapping>

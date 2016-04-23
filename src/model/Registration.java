@@ -5,6 +5,7 @@ public class Registration {
 	private String id;
 	private Doctor doctor;
 	private Patient patient;
+	private TimeQuantum timeQuantum;
 	
 	
 	public String getId() {
@@ -24,5 +25,11 @@ public class Registration {
 	}
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+	}
+	public TimeQuantum getTimeQuantum() {
+		return timeQuantum;
+	}
+	public void setTimeQuantum(TimeQuantum timeQuantum) {
+		this.timeQuantum = timeQuantum;
 	}
 }

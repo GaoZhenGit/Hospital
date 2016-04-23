@@ -18,6 +18,7 @@ import model.Hospital;
 import model.Patient;
 import model.Person;
 import model.Registration;
+import model.TimeQuantum;
 import model.Title;
 
 @WebServlet("/RegisterServlet")
@@ -67,8 +68,12 @@ public class RegisterServlet extends HttpServlet {
 		patient.setAge(23);
 		patient.setSex(Person.MALE);
 		
+		TimeQuantum timeQuantum = new TimeQuantum(15, 00);
+		timeQuantum.setId("1");
+		
 		Registration registration = new Registration();
 		registration.setDoctor(doctor1);
+		registration.setTimeQuantum(timeQuantum);
 		registration.setPatient(patient);
 		
 		session.save(hospital);
@@ -78,6 +83,7 @@ public class RegisterServlet extends HttpServlet {
 		session.save(title1);
 		session.save(doctor1);
 		session.save(patient);
+		session.save(timeQuantum);
 		session.save(registration);
 		
 		transaction.commit();
