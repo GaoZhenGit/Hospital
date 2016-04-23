@@ -7,7 +7,6 @@ public class Registration {
 	private Patient patient;
 	private TimeQuantum timeQuantum;
 	
-	
 	public String getId() {
 		return id;
 	}
