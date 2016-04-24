@@ -1,6 +1,8 @@
 package hibernate;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -36,6 +38,33 @@ public class Dao {
 		List list = criteria.list();
 		session.close();
 		return list;
+	}
+	
+	public static <T> List<T> queryByMulti(Map<String, String> condition, Class<T> clazz) {
+		//根据字段查询类
+		SessionFactory sessionFactory = Factory.get();
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(clazz);
+		for(Entry<String, String> c:condition.entrySet()){
+			criteria.add(Restrictions.eq(c.getKey(),c.getValue()));
+		}
+		List list = criteria.list();
+		session.close();
+		return list;
+	}
+	
+	public static void update(Object...objects) throws Exception{
+		//同一事务下更新一个或多个对象
+				SessionFactory sessionFactory = Factory.get();
+				Session session = sessionFactory.openSession();
+				Transaction transaction = session.beginTransaction();
+
+				for (Object item : objects) {
+					session.update(item);
+				}
+
+				transaction.commit();
+				session.close();
 	}
 
 	public static void save(Object... tList) throws Exception {

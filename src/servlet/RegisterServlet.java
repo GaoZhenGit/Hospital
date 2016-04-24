@@ -106,6 +106,13 @@ public class RegisterServlet extends HttpServlet {
 						.append("<br/>");
 			}
 		}
+		hospital3.setAddress("深圳市莆田系");
+		try {
+			Dao.update(hospital3);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
