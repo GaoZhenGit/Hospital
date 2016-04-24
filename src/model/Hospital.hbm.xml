@@ -9,7 +9,7 @@
 		<property name="name" column="name" type="java.lang.String" />
 		<property name="address" column="address" type="java.lang.String"/>
 		<property name="description" column="description" type="java.lang.String"/>
-		<set name="departments" inverse="true">
+		<set name="departments" inverse="true" lazy="false">
 			<key column="hospital_id" />
 			<one-to-many class="Department" />
 		</set>

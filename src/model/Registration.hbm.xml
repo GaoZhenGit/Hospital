@@ -7,10 +7,10 @@
 			<generator class="uuid" />
 		</id>
 		<many-to-one name="doctor" class="Doctor" column="doctor_id"
-			not-null="true" />
+			not-null="true" lazy="false" />
 		<many-to-one name="patient" class="Patient" column="patient_id"
-			not-null="true" />
+			not-null="true" lazy="false" />
 		<many-to-one name="timeQuantum" class="TimeQuantum"
-			column="time_id" not-null="true" />
+			column="time_id" not-null="true" lazy="false" />
 	</class>
 </hibernate-mapping>

@@ -8,7 +8,7 @@
 		</id>
 		<property name="name" column="name" type="java.lang.String" />
 		<property name="description" column="description" type="java.lang.String"/>
-		<set name="doctors" inverse="true">
+		<set name="doctors" inverse="true" lazy="false">
 			<key column="department_id" />
 			<one-to-many class="Doctor" />
 		</set>

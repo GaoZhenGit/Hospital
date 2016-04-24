@@ -25,7 +25,7 @@ import model.Title;
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -35,36 +35,38 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath()).append("\n");
-//		SessionFactory sessionFactory = hibernate.Factory.get();
-//		Session session = sessionFactory.openSession();
-//		Transaction transaction = session.beginTransaction();
-		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath()).append("<br/>");
+		// SessionFactory sessionFactory = hibernate.Factory.get();
+		// Session session = sessionFactory.openSession();
+		// Transaction transaction = session.beginTransaction();
+
 		Hospital hospital = new Hospital();
 		hospital.setName("协和医院");
 		hospital.setAddress("莆田系");
 		hospital.setDescription("专治不孕不育");
-		
+
 		Hospital hospital2 = new Hospital();
 		hospital2.setName("仁爱医院");
 		hospital2.setAddress("又是莆田系");
 		hospital2.setDescription("还是治不孕不育");
-		
+
 		Department department1 = new Department();
 		department1.setName("外科");
 		department1.setHospital(hospital);
 		department1.setDescription("临床外科门诊");
-		
+
 		Department department2 = new Department();
 		department2.setName("内科");
 		department2.setHospital(hospital);
 		department2.setDescription("病毒学内科");
-		
+
 		Title title1 = new Title();
 		title1.setId("1");
 		title1.setFee(20);
 		title1.setName("教授");
-		
+
 		Doctor doctor1 = new Doctor();
 		doctor1.setAge(50);
 		doctor1.setName("李时珍");
@@ -73,40 +75,38 @@ public class RegisterServlet extends HttpServlet {
 		doctor1.setTitle(title1);
 		doctor1.setDescription("中医专治十余年");
 		doctor1.setWorkAge(12);
-		
+
 		Patient patient = new Patient();
 		patient.setAccout("lidong");
 		patient.setName("LiDong");
 		patient.setAge(23);
 		patient.setSex(Person.MALE);
-		
+
 		TimeQuantum timeQuantum = new TimeQuantum(15, 00);
 		timeQuantum.setId("1");
-		
+
 		Registration registration = new Registration();
 		registration.setDoctor(doctor1);
 		registration.setTimeQuantum(timeQuantum);
 		registration.setPatient(patient);
-		
-		
+
 		try {
-			Dao.save(hospital,
-					hospital2,
-					department1,
-					department2,
-					title1,
-					doctor1,
-					patient,
-					timeQuantum,
+			Dao.save(hospital, hospital2, department1, department2, title1, doctor1, patient, timeQuantum,
 					registration);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		Hospital hospital3 = Dao.getByName("协和医院", Hospital.class);
-		response.getWriter().append(hospital3.getId()).append(hospital3.getName()).append("\n")
-		.append(hospital3.getDepartments().size()+"");
-		
+		response.getWriter().append(hospital3.getId()).append(hospital3.getName()).append("<br/>");
+		for (Department d : hospital3.getDepartments()) {
+			response.getWriter().append(d.getName()).append(":<br/>");
+			for (Doctor doctor : d.getDoctors()) {
+				response.getWriter().append(doctor.getName()).append("职称：" + doctor.getTitle().getName())
+						.append("<br/>");
+			}
+		}
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
