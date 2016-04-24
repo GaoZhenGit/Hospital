@@ -6,6 +6,7 @@ public class Hospital {
 	private String id;
 	private String name;
 	private String address;
+	private String description;
 	private Set<Department> departments;
 	
 	
@@ -33,5 +34,11 @@ public class Hospital {
 	}
 	public void setDepartments(Set<Department> departments) {
 		this.departments = departments;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

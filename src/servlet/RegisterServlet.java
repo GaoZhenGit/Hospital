@@ -43,18 +43,22 @@ public class RegisterServlet extends HttpServlet {
 		Hospital hospital = new Hospital();
 		hospital.setName("协和医院");
 		hospital.setAddress("莆田系");
+		hospital.setDescription("专治不孕不育");
 		
 		Hospital hospital2 = new Hospital();
 		hospital2.setName("仁爱医院");
 		hospital2.setAddress("又是莆田系");
+		hospital2.setDescription("还是治不孕不育");
 		
 		Department department1 = new Department();
 		department1.setName("外科");
 		department1.setHospital(hospital);
+		department1.setDescription("临床外科门诊");
 		
 		Department department2 = new Department();
 		department2.setName("内科");
 		department2.setHospital(hospital);
+		department2.setDescription("病毒学内科");
 		
 		Title title1 = new Title();
 		title1.setId("1");
@@ -67,6 +71,8 @@ public class RegisterServlet extends HttpServlet {
 		doctor1.setSex(Person.MALE);
 		doctor1.setDepartment(department1);
 		doctor1.setTitle(title1);
+		doctor1.setDescription("中医专治十余年");
+		doctor1.setWorkAge(12);
 		
 		Patient patient = new Patient();
 		patient.setAccout("lidong");
@@ -98,7 +104,9 @@ public class RegisterServlet extends HttpServlet {
 		}
 		
 		Hospital hospital3 = Dao.getByName("协和医院", Hospital.class);
-		response.getWriter().append(hospital3.getId()).append(hospital3.getName());
+		response.getWriter().append(hospital3.getId()).append(hospital3.getName()).append("\n")
+		.append(hospital3.getDepartments().size()+"");
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

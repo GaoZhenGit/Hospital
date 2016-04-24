@@ -5,6 +5,7 @@ import java.util.Set;
 public class Department {
 	private String id;
 	private String name;
+	private String description;
 	private Hospital hospital;
 	private Set<Doctor> doctors;
 	
@@ -33,5 +34,11 @@ public class Department {
 	}
 	public void setDoctors(Set<Doctor> doctors) {
 		this.doctors = doctors;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
