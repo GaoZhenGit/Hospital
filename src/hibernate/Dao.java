@@ -12,7 +12,11 @@ import org.hibernate.criterion.Restrictions;
 
 public class Dao {
 
-	
+	public static <T> T getById(String id, Class<T> clazz){
+		SessionFactory sessionFactory = Factory.get();
+		Session session = sessionFactory.openSession();
+		return session.get(clazz, id);
+	}
 	public static <T> T getByName(String name, Class<T> clazz) {
 		//通过名字查询类
 		SessionFactory sessionFactory = Factory.get();
