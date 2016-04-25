@@ -11,5 +11,6 @@
 		<property name="name" column="name" type="java.lang.String" />
 		<property name="age" column="age" type="int"/>
 		<property name="sex" column="sex" type="int"/>
+		<property name="bankAccount" column="bank_account" type="java.lang.String"/>
 	</class>
 </hibernate-mapping>
