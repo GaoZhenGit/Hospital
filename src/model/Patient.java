@@ -2,16 +2,16 @@ package model;
 
 public class Patient extends Person{
 	
-	private String accout;
+	private String account;
 	private String password;
 	private String bankAccount;
 	
 	
-	public String getAccout() {
-		return accout;
+	public String getAccount() {
+		return account;
 	}
-	public void setAccout(String accout) {
-		this.accout = accout;
+	public void setAccount(String account) {
+		this.account = account;
 	}
 	public String getPassword() {
 		return password;

@@ -61,7 +61,7 @@ public class RegisterServlet extends HttpServlet {
 		department2.setName("内科");
 		department2.setHospital(hospital);
 		department2.setDescription("病毒学内科");
-
+ 
 		Title title1 = new Title();
 		title1.setId("1");
 		title1.setFee(20);
@@ -77,8 +77,9 @@ public class RegisterServlet extends HttpServlet {
 		doctor1.setWorkAge(12);
 
 		Patient patient = new Patient();
-		patient.setAccout("lidong");
+		patient.setAccount("lidong");
 		patient.setName("LiDong");
+		patient.setPassword("123456");
 		patient.setAge(23);
 		patient.setSex(Person.MALE);
 
