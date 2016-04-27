@@ -32,7 +32,7 @@
 	</table>
 	<br /> 医院部门：
 	<br />
-	<table  border="1px" cellspacing="0px">
+	<table border="1px" cellspacing="0px">
 		<tr>
 			<td>部门名称</td>
 			<td>部门介绍</td>
@@ -48,5 +48,31 @@
 			}
 		%>
 	</table>
+	<br /> 修改医院属性：
+	<form action="HospitalModify.html" method="post" charset="utf8">
+		<table border="1px" cellspacing="0px">
+			<tr>
+				<td>医院名称：</td>
+				<td><input type="text" name="name" /></td>
+			</tr>
+			<tr>
+				<td>医院登录账号：</td>
+				<td><input type="text" name="account" /></td>
+			</tr>
+			<tr>
+				<td>登录密码：</td>
+				<td><input type="text" name="password" /></td>
+			</tr>
+			<tr>
+				<td>描述：</td>
+				<td><input type="text" name="description" /></td>
+			</tr>
+			<tr>
+				<td>地址：</td>
+				<td><input type="text" name="address" /></td>
+			</tr>
+		</table>
+		<input type="submit" value="确认修改"/>
+	</form>
 </body>
 </html>

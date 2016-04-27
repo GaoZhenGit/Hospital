@@ -15,7 +15,9 @@ public class Dao {
 	public static <T> T getById(String id, Class<T> clazz){
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
-		return session.get(clazz, id);
+		T result = session.get(clazz, id);
+		session.close();
+		return result;
 	}
 	public static <T> T getByName(String name, Class<T> clazz) {
 		//通过名字查询类
