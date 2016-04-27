@@ -49,6 +49,7 @@ public class LoginServlet extends HttpServlet {
 		if(patients.size()==1){
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", patients.get(0).getId());
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/loginSuccess.jsp");
 			rd.forward(request, response);
 		}else {

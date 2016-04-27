@@ -11,7 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 public class Dao {
-
+	
 	public static <T> T getById(String id, Class<T> clazz){
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
@@ -32,7 +32,6 @@ public class Dao {
 			return null;
 		}
 	}
-
 	public static <T> List<T> queryByField(String field, String value, Class<T> clazz) {
 		//根据字段查询类
 		SessionFactory sessionFactory = Factory.get();
@@ -43,7 +42,6 @@ public class Dao {
 		session.close();
 		return list;
 	}
-	
 	public static <T> List<T> queryByMulti(Map<String, String> condition, Class<T> clazz) {
 		//根据字段查询类
 		SessionFactory sessionFactory = Factory.get();
@@ -56,7 +54,6 @@ public class Dao {
 		session.close();
 		return list;
 	}
-	
 	public static void update(Object...objects) throws Exception{
 		//同一事务下更新一个或多个对象
 				SessionFactory sessionFactory = Factory.get();
