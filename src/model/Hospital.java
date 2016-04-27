@@ -7,6 +7,8 @@ public class Hospital {
 	private String name;
 	private String address;
 	private String description;
+	private String account;
+	private String password;
 	private Set<Department> departments;
 	
 	
@@ -40,5 +42,17 @@ public class Hospital {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getAccount() {
+		return account;
+	}
+	public void setAccount(String account) {
+		this.account = account;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }
