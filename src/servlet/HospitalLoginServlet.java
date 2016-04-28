@@ -44,6 +44,7 @@ public class HospitalLoginServlet extends HttpServlet {
 		List<Hospital> list = Dao.queryByMulti(param, Hospital.class);
 		if(list.size()==1){
 			HttpSession session = request.getSession(true);
+			session.setMaxInactiveInterval(30000);
 			session.setAttribute("hospital", list.get(0).getId());
 			response.sendRedirect(request.getContextPath() + "/HospitalPage.jsp");
 		}else{

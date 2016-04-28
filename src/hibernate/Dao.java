@@ -12,6 +12,15 @@ import org.hibernate.criterion.Restrictions;
 
 public class Dao {
 	
+	public static <T> List<T> getAll(Class<T> clazz){
+		SessionFactory sessionFactory = Factory.get();
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(clazz);
+		List<T> list = criteria.list();
+		session.close();
+		return list;
+	}
+	
 	public static <T> T getById(String id, Class<T> clazz){
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();

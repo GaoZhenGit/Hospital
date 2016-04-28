@@ -18,6 +18,10 @@
 	%>
 	<table border="1px" cellspacing="0px">
 		<tr>
+			<td>医院id：</td>
+			<td><%=hospital.getId()%></td>
+		</tr>
+		<tr>
 			<td>医院名称：</td>
 			<td><%=hospital.getName()%></td>
 		</tr>
@@ -34,6 +38,7 @@
 	<br />
 	<table border="1px" cellspacing="0px">
 		<tr>
+			<td>部门id</td>
 			<td>部门名称</td>
 			<td>部门介绍</td>
 		</tr>
@@ -41,6 +46,7 @@
 			for (Department department : hospital.getDepartments()) {
 		%>
 		<tr>
+			<td><%=department.getId() %></td>
 			<td><%=department.getName()%></td>
 			<td><%=department.getDescription()%></td>
 		</tr>
@@ -72,7 +78,8 @@
 				<td><input type="text" name="address" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="确认修改"/>
+		<input type="submit" value="确认修改" />
 	</form>
+	<br/>添加科室：
 </body>
 </html>
