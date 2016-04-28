@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,6 +25,7 @@ public class PatientRegisterServlet extends HttpServlet {
 	private Patient patient;
 	private String phone;
 	private String password;
+	private RequestDispatcher rd;
 	private boolean isRegister = false;
 	public PatientRegisterServlet() {
 		super();
@@ -35,7 +37,13 @@ public class PatientRegisterServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		processRequest(req);
 		processResponse(resp);
-		
+		if(isRegister){
+			rd=getServletContext().getRequestDispatcher("/Register.jsp");
+			rd.forward(req, resp);
+		}else {
+			rd=getServletContext().getRequestDispatcher("/PatientRegister.jsp");
+			rd.forward(req, resp);
+		}
 	}
 
 	@Override
@@ -57,27 +65,31 @@ public class PatientRegisterServlet extends HttpServlet {
 					patient.setPassword(password);
 					PatientManage.saveData(patient);
 					isRegister = true;
+				}else {
+					req.setAttribute("err", "该用户名已存在！");
 				}
+			}else {
+				req.setAttribute("err", "用户名或者密码不能为空！");
 			}
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 	}
 	public void processResponse(HttpServletResponse resp) {
-		try {
-			if (isRegister) {
-				resp.sendRedirect("Register.jsp");
-//				resp.setCharacterEncoding("UTF-8");
-//				resp.setContentType("text/html;charset=utf-8");
-//				PrintWriter out=resp.getWriter();
-//				out.append("注册成功！");
-//				out.close();
-			}else {
-				resp.sendRedirect("PatientRegister.jsp");
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			if (isRegister) {
+//				resp.sendRedirect("Register.jsp");
+////				resp.setCharacterEncoding("UTF-8");
+////				resp.setContentType("text/html;charset=utf-8");
+////				PrintWriter out=resp.getWriter();
+////				out.append("注册成功！");
+////				out.close();
+//			}else {
+//				resp.sendRedirect("PatientRegister.jsp");
+//			}
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 }

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>病人登录页面</title>
+<title>病人注册页面</title>
 </head>
 <body>
 病人注册

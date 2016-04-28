@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>Insert title here</title>
+<title>病人登录页面</title>
 </head>
 <body>
 病人登录
@@ -22,6 +22,8 @@ if(null!=request.getAttribute("err")){
 </span>
 <br/>
 <input type="submit" value="登录"/>
+<a href="PatientRegister.jsp">没号，去注册吧</a>
 </form>
+
 </body>
 </html>

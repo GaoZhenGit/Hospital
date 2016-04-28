@@ -1,15 +1,20 @@
 package datamanage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import hibernate.Dao;
+
+import java.util.List;
+
 
 import model.Hospital;
 
 public class HispitalManage {
 	
-	public Hospital addHoptital(){
+	public static Hospital addHoptital(){
 		Hospital hospital=new Hospital();
 		return hospital;
+	}
+	public static List<Hospital> getHospitalByName(String name){
+		return Dao.queryByField("name", name, Hospital.class);
 	}
 //	public Hospital modifyHospital(String id){
 //		

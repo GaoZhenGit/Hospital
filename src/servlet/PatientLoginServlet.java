@@ -49,7 +49,8 @@ public class PatientLoginServlet extends HttpServlet{
 				if(null!=PatientManage.login(phone, password)){
 					patient=PatientManage.login(phone, password);
 					HttpSession session=req.getSession();
-					session.setAttribute("id", patient.getId());
+					session.setAttribute("patient", patient);
+					req.setAttribute("phone", phone);
 					isLogin=true;
 				}else {
 					req.setAttribute("err", "用户名或者密码错误！");
