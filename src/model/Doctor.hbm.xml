@@ -12,7 +12,7 @@
 		<property name="workAge" column="work_age" type="int" />
 		<property name="description" column="description" type="java.lang.String" />
 		<many-to-one name="department" class="Department" column="department_id"
-			not-null="true" lazy="false"/>
+			 lazy="false" />
 		<many-to-one name="title" class="Title" column="title_id"
 			not-null="true" lazy="false"/>
 	</class>
