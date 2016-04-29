@@ -37,7 +37,6 @@ public class HospitalModifyServlet extends HttpServlet {
 		}
 		Hospital hospital = Dao.getById(hospitalId, Hospital.class);
 
-		// 判断修改动作：修改医院属性
 		// if(request.getParameter("operation").equals("modifyHospital")){
 		modifyHospital(request, response, hospital);
 		// }

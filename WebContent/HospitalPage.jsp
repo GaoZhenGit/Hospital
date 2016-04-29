@@ -81,5 +81,49 @@
 		<input type="submit" value="确认修改" />
 	</form>
 	<br/>添加科室：
+	<form action="Department.html" method="post" charset="utf8">
+		<table border="1px" cellspacing="0px">
+			<tr>
+				<td>科室名称：</td>
+				<td><input type="text" name="name" /></td>
+			</tr>
+			<tr>
+				<td>科室描述：</td>
+				<td><input type="text" name="description" /></td>
+			</tr>
+		</table>
+		<input type="submit" value="确认添加" />
+		<input type="hidden" name="type" value="add"/>
+	</form>
+	<br/>修改科室：
+	<form action="Department.html" method="post" charset="utf8">
+		<table border="1px" cellspacing="0px">
+			<tr>
+				<td>科室id：</td>
+				<td><input type="text" name="id" /></td>
+			</tr>
+			<tr>
+				<td>科室名称：</td>
+				<td><input type="text" name="name" /></td>
+			</tr>
+			<tr>
+				<td>科室描述：</td>
+				<td><input type="text" name="description" /></td>
+			</tr>
+		</table>
+		<input type="submit" value="确认修改" />
+		<input type="hidden" name="type" value="modify"/>
+	</form>
+	<br/>删除科室：
+	<form action="Department.html" method="post" charset="utf8">
+		<table border="1px" cellspacing="0px">
+			<tr>
+				<td>科室id：</td>
+				<td><input type="text" name="id" /></td>
+			</tr>
+		</table>
+		<input type="submit" value="确认删除" />
+		<input type="hidden" name="type" value="delete"/>
+	</form>
 </body>
 </html>

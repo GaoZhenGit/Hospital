@@ -46,11 +46,15 @@ public class RegisterServlet extends HttpServlet {
 		hospital.setName("协和医院");
 		hospital.setAddress("莆田系");
 		hospital.setDescription("专治不孕不育");
+		hospital.setAccount("xiehe");
+		hospital.setPassword("654321");
 
 		Hospital hospital2 = new Hospital();
 		hospital2.setName("仁爱医院");
 		hospital2.setAddress("又是莆田系");
 		hospital2.setDescription("还是治不孕不育");
+		hospital2.setAccount("renai");
+		hospital2.setPassword("123456");
 
 		Department department1 = new Department();
 		department1.setName("外科");

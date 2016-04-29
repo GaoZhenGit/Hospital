@@ -8,11 +8,11 @@
 		</id>
 		<property name="name" column="name" type="java.lang.String" />
 		<property name="description" column="description" type="java.lang.String"/>
-		<set name="doctors" inverse="true" lazy="false">
+		<set name="doctors" lazy="false" inverse="true" cascade="all">
 			<key column="department_id" />
 			<one-to-many class="Doctor" />
 		</set>
 		<many-to-one name="hospital" class="Hospital" column="hospital_id"
-			not-null="true" />
+			not-null="true" lazy="false"/>
 	</class>
 </hibernate-mapping>
