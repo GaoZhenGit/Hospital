@@ -43,35 +43,25 @@ public class DoctorServlet extends HttpServlet {
 		}
 		Hospital hospital = Dao.getById(hospitalId, Hospital.class);
 
-		String departmentId = request.getParameter("department");
-		if (departmentId == null || departmentId.length() == 0) {
-			response.sendRedirect(request.getContextPath() + "/HospitalLogin.jsp");
-			return;
-		}
-
-		Department department = null;
-		for (Department d : hospital.getDepartments()) {
-			if (d.getId().equals(departmentId)) {
-				department = d;
-				break;
+		String type = request.getParameter("type");
+		if (type.equals("add")) {
+			Department department = null;
+			String departmentId = request.getParameter("department");
+			for (Department d : hospital.getDepartments()) {
+				if (d.getId().equals(departmentId)) {
+					department = d;
+					break;
+				}
 			}
-		}
-
-		if (department != null) {
-			String type = request.getParameter("type");
-			if (type == null || type.length() == 0) {
-				response.sendRedirect(request.getContextPath() + "/HospitalLogin.jsp");
-				return;
-			}
-			if (type.equals("add")) {
+			if (department != null) {
 				addDoctor(request, response, department);
-			} else if (type.equals("modify")) {
-				modifyDoctor(request, response);
-			} else if (type.equals("delete")) {
-				deleteDoctor(request, response);
 			}
-			response.sendRedirect(request.getContextPath() + "/HospitalPage.jsp");
+		} else if (type.equals("modify")) {
+			modifyDoctor(request, response);
+		} else if (type.equals("delete")) {
+			deleteDoctor(request, response);
 		}
+		response.sendRedirect(request.getContextPath() + "/HospitalPage.jsp");
 	}
 
 	private void addDoctor(HttpServletRequest request, HttpServletResponse response, Department department) {
@@ -82,7 +72,8 @@ public class DoctorServlet extends HttpServlet {
 		String description = request.getParameter("description");
 		String titleName = request.getParameter("title");
 
-		if (isEmpty(name) || isEmpty(age) || isEmpty(workAge) || isEmpty(description) || isEmpty(titleName) || isEmpty(sex)) {
+		if (isEmpty(name) || isEmpty(age) || isEmpty(workAge) || isEmpty(description) || isEmpty(titleName)
+				|| isEmpty(sex)) {
 			System.err.println("empty");
 			System.err.println(isEmpty(name));
 			System.err.println(isEmpty(age));
@@ -94,7 +85,7 @@ public class DoctorServlet extends HttpServlet {
 		}
 
 		Title title = Dao.getByName(titleName, Title.class);
-		if (title == null){
+		if (title == null) {
 			System.err.println("no title");
 			return;
 		}
@@ -112,48 +103,49 @@ public class DoctorServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
-	private void modifyDoctor(HttpServletRequest request, HttpServletResponse response){
+
+	private void modifyDoctor(HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("modify");
 		String id = request.getParameter("id");
 		Doctor doctor = Dao.getById(id, Doctor.class);
-		if(doctor == null){
+		if (doctor == null) {
 			System.out.println("doctor empty");
 			return;
 		}
 		String name = request.getParameter("name");
-		if(!isEmpty(name)){
+		if (!isEmpty(name)) {
 			doctor.setName(name);
 		}
 		String age = request.getParameter("age");
-		if(!isEmpty(age)){
-			try{
+		if (!isEmpty(age)) {
+			try {
 				doctor.setAge(Integer.parseInt(age));
-			}catch(Exception exception){
+			} catch (Exception exception) {
 				exception.printStackTrace();
 			}
 		}
 		String sex = request.getParameter("sex");
-		if(!isEmpty(sex)){
-			try{
+		if (!isEmpty(sex)) {
+			try {
 				doctor.setSex(Integer.parseInt(age) == Person.MALE ? Person.MALE : Person.FEMALE);
-			}catch(Exception exception){
+			} catch (Exception exception) {
 				exception.printStackTrace();
 			}
 		}
 		String workAge = request.getParameter("workage");
-		if(!isEmpty(workAge)){
-			try{
+		if (!isEmpty(workAge)) {
+			try {
 				doctor.setWorkAge(Integer.parseInt(workAge));
-			}catch(Exception exception){
+			} catch (Exception exception) {
 				exception.printStackTrace();
 			}
 		}
 		String description = request.getParameter("descropition");
-		if(!isEmpty(description)){
+		if (!isEmpty(description)) {
 			doctor.setDescription(description);
 		}
 		String titleName = request.getParameter("title");
-		if(!isEmpty(titleName)){
+		if (!isEmpty(titleName)) {
 			Title title = Dao.getByName(titleName, Title.class);
 			if (title == null)
 				return;
@@ -165,11 +157,11 @@ public class DoctorServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-	
-	private void deleteDoctor(HttpServletRequest request, HttpServletResponse response){
+
+	private void deleteDoctor(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		Doctor doctor = Dao.getById(id, Doctor.class);
-		if(doctor!=null){
+		if (doctor != null) {
 			try {
 				Dao.delete(doctor);
 			} catch (Exception e) {

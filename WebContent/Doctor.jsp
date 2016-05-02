@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<title>医生测试页面</title>
 </head>
 <body>
 	<form action="Doctor.html" method="post" charset="utf8">
@@ -76,9 +76,18 @@
 				<td><input type="text" name="title" /></td>
 			</tr>
 		</table>
-		<input type="hidden" name="type"
-			value="modify" />
-		<input type="submit" value="确认" />
+		<input type="hidden" name="type" value="modify" /> <input
+			type="submit" value="确认" />
+	</form>
+	<form action="Doctor.html" method="post" charset="utf8">
+		<table border="1px" cellspacing="0px">
+			<tr>
+				<td>医生id：</td>
+				<td><input type="text" name="id" /></td>
+			</tr>
+		</table>
+		<input type="hidden" name="type" value="delete" />
+		<input type="submit" value="确认"/>
 	</form>
 </body>
 </html>
