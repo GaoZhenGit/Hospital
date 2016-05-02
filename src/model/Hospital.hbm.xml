@@ -11,9 +11,9 @@
  		<property name="description" column="description" type="java.lang.String"/> 
  		<property name="account" column="account" type="java.lang.String"/>
 		<property name="password" column= "password" type="java.lang.String"/>
- 		<set name="departments" inverse="true" lazy="false"> 
+ 		<set name="departments" lazy="false" inverse="false"  cascade="all-delete-orphan"> 
  			<key column="hospital_id" /> 
- 			<one-to-many class="Department" /> 
+ 			<one-to-many class="Department"/> 
  		</set> 
 	</class>
 </hibernate-mapping>

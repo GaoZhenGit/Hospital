@@ -10,9 +10,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
+import model.Doctor;
+import model.Patient;
+import model.Registration;
+import model.TimeQuantum;
+
 public class Dao {
-	
-	public static <T> List<T> getAll(Class<T> clazz){
+
+	public static <T> List<T> getAll(Class<T> clazz) {
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(clazz);
@@ -20,16 +25,17 @@ public class Dao {
 		session.close();
 		return list;
 	}
-	
-	public static <T> T getById(String id, Class<T> clazz){
+
+	public static <T> T getById(String id, Class<T> clazz) {
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		T result = session.get(clazz, id);
 		session.close();
 		return result;
 	}
+
 	public static <T> T getByName(String name, Class<T> clazz) {
-		//通过名字查询类
+		// 通过名字查询类
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(clazz);
@@ -43,8 +49,9 @@ public class Dao {
 			return null;
 		}
 	}
+
 	public static <T> List<T> queryByField(String field, String value, Class<T> clazz) {
-		//根据字段查询类
+		// 根据字段查询类
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(clazz);
@@ -53,34 +60,36 @@ public class Dao {
 		session.close();
 		return list;
 	}
+
 	public static <T> List<T> queryByMulti(Map<String, String> condition, Class<T> clazz) {
-		//根据字段查询类
+		// 根据字段查询类
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Criteria criteria = session.createCriteria(clazz);
-		for(Entry<String, String> c:condition.entrySet()){
-			criteria.add(Restrictions.eq(c.getKey(),c.getValue()));
+		for (Entry<String, String> c : condition.entrySet()) {
+			criteria.add(Restrictions.eq(c.getKey(), c.getValue()));
 		}
 		List list = criteria.list();
 		session.close();
 		return list;
 	}
-	public static void update(Object...objects) throws Exception{
-		//同一事务下更新一个或多个对象
-				SessionFactory sessionFactory = Factory.get();
-				Session session = sessionFactory.openSession();
-				Transaction transaction = session.beginTransaction();
 
-				for (Object item : objects) {
-					session.update(item);
-				}
+	public static void update(Object... objects) throws Exception {
+		// 同一事务下更新一个或多个对象
+		SessionFactory sessionFactory = Factory.get();
+		Session session = sessionFactory.openSession();
+		Transaction transaction = session.beginTransaction();
 
-				transaction.commit();
-				session.close();
+		for (Object item : objects) {
+			session.update(item);
+		}
+
+		transaction.commit();
+		session.close();
 	}
 
 	public static void save(Object... tList) throws Exception {
-		//同一事务下保存一个或多个对象
+		// 同一事务下保存一个或多个对象
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -94,7 +103,7 @@ public class Dao {
 	}
 
 	public static <T> void delete(T t) throws Exception {
-		//删除特定对象
+		// 删除特定对象
 		SessionFactory sessionFactory = Factory.get();
 		Session session = sessionFactory.openSession();
 		Transaction transaction = session.beginTransaction();
@@ -103,5 +112,28 @@ public class Dao {
 
 		transaction.commit();
 		session.close();
+	}
+
+	public static List<Registration> getRegistrations(Doctor doctor, Patient patient, TimeQuantum timeQuantum)
+			throws Exception {
+		SessionFactory sessionFactory = Factory.get();
+		Session session = sessionFactory.openSession();
+		Criteria criteria = session.createCriteria(Registration.class);
+		if (doctor != null) {
+			System.out.println("doctor");
+			criteria.add(Restrictions.eq("doctor", doctor));
+		}
+
+		if (patient != null) {
+			criteria.add(Restrictions.eq("patient", patient));
+		}
+
+		if (timeQuantum != null) {
+			criteria.add(Restrictions.eq("timeQuantum", timeQuantum));
+		}
+
+		List<Registration> result = criteria.list();
+		session.close();
+		return result;
 	}
 }

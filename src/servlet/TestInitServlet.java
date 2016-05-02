@@ -22,14 +22,14 @@ import model.Registration;
 import model.TimeQuantum;
 import model.Title;
 
-@WebServlet("/RegisterServlet")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/init.html")
+public class TestInitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RegisterServlet() {
+	public TestInitServlet() {
 		super();
 	}
 
@@ -38,9 +38,6 @@ public class RegisterServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		response.getWriter().append("Served at: ").append(request.getContextPath()).append("<br/>");
-		// SessionFactory sessionFactory = hibernate.Factory.get();
-		// Session session = sessionFactory.openSession();
-		// Transaction transaction = session.beginTransaction();
 
 		Hospital hospital = new Hospital();
 		hospital.setName("协和医院");
@@ -68,8 +65,13 @@ public class RegisterServlet extends HttpServlet {
  
 		Title title1 = new Title();
 		title1.setId("1");
-		title1.setFee(20);
-		title1.setName("教授");
+		title1.setFee(50);
+		title1.setName("主任医师");
+		
+		Title title2 = new Title();
+		title2.setId("2");
+		title2.setFee(30);
+		title2.setName("副主任医师");
 
 		Doctor doctor1 = new Doctor();
 		doctor1.setAge(50);
@@ -79,6 +81,15 @@ public class RegisterServlet extends HttpServlet {
 		doctor1.setTitle(title1);
 		doctor1.setDescription("中医专治十余年");
 		doctor1.setWorkAge(12);
+		
+		Doctor doctor2 = new Doctor();
+		doctor2.setAge(45);
+		doctor2.setName("终南山");
+		doctor2.setSex(Person.MALE);
+		doctor2.setDepartment(department2);
+		doctor2.setTitle(title2);
+		doctor2.setDescription("抗击非典英雄");
+		doctor2.setWorkAge(20);
 
 		Patient patient = new Patient();
 		patient.setAccount("lidong");
@@ -115,7 +126,6 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			Dao.update(hospital3);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
