@@ -59,7 +59,7 @@ public class RegistrationServlet extends BaseServlet {
 
 		try {
 			List<Registration> registrations = Dao.getRegistrations(doctor, patient, timeQuantum);
-			if(registrations.size()>=doctor.getPreTimePatient()){
+			if (registrations.size() >= doctor.getPreTimePatient()) {
 				back(response);
 				return;
 			}
