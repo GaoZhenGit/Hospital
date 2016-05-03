@@ -6,6 +6,9 @@
 		<id name="id" type="java.lang.String">
 			<generator class="uuid" />
 		</id>
+		<property name="year" column="year" type="int" />
+		<property name="month" column="month" type="int" />
+		<property name="hasPay" column="has_pay" type="boolean" />
 		<many-to-one name="doctor" class="Doctor" column="doctor_id"
 			not-null="true" lazy="false" />
 		<many-to-one name="patient" class="Patient" column="patient_id"

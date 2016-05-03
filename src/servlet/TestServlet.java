@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 
 import hibernate.Dao;
 import model.Doctor;
+import model.Registration;
 
 /**
  * Servlet implementation class TestServlet
@@ -23,9 +24,9 @@ public class TestServlet extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		Doctor doctor = Dao.getAll(Doctor.class).get(0);
+		Registration registration = Dao.getById("4028b8815477297401547729799d0007", Registration.class);
 		try {
-			response.getWriter().append(Dao.getRegistrations(doctor, null, null).size()+"");
+			response.getWriter().append("haspay"+ registration.isHasPay());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

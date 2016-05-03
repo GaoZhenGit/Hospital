@@ -6,6 +6,7 @@ public class Doctor extends Person{
 	private int workAge;
 	private String description;
 	private Title title;
+	private int preTimePatient;
 	
 	public Department getDepartment() {
 		return department;
@@ -30,5 +31,11 @@ public class Doctor extends Person{
 	}
 	public void setTitle(Title title) {
 		this.title = title;
+	}
+	public int getPreTimePatient() {
+		return preTimePatient;
+	}
+	public void setPreTimePatient(int preTimePatient) {
+		this.preTimePatient = preTimePatient;
 	}
 }

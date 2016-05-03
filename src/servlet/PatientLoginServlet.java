@@ -48,7 +48,7 @@ public class PatientLoginServlet extends HttpServlet{
 			if(null!=password&&null!=phone){
 				if(null!=PatientManage.login(phone, password)){
 					patient=PatientManage.login(phone, password);
-					HttpSession session=req.getSession();
+					HttpSession session=req.getSession(true);
 					session.setAttribute("patient", patient);
 					req.setAttribute("phone", phone);
 					isLogin=true;

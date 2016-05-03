@@ -11,6 +11,7 @@
 		<property name="sex" column="sex" type="int" />
 		<property name="workAge" column="work_age" type="int" />
 		<property name="description" column="description" type="java.lang.String" />
+		<property name="preTimePatient" column="pre_time_patient" type="int"/>
 		<many-to-one name="department" class="Department" column="department_id"
 			 lazy="false" />
 		<many-to-one name="title" class="Title" column="title_id"

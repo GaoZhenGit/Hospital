@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import hibernate.Dao;
 import model.Department;
@@ -22,13 +19,10 @@ import model.Registration;
 import model.TimeQuantum;
 import model.Title;
 
-@WebServlet("/init.html")
+@WebServlet("/testInit.html")
 public class TestInitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public TestInitServlet() {
 		super();
 	}
@@ -62,12 +56,12 @@ public class TestInitServlet extends HttpServlet {
 		department2.setName("内科");
 		department2.setHospital(hospital);
 		department2.setDescription("病毒学内科");
- 
+
 		Title title1 = new Title();
 		title1.setId("1");
 		title1.setFee(50);
 		title1.setName("主任医师");
-		
+
 		Title title2 = new Title();
 		title2.setId("2");
 		title2.setFee(30);
@@ -81,7 +75,8 @@ public class TestInitServlet extends HttpServlet {
 		doctor1.setTitle(title1);
 		doctor1.setDescription("中医专治十余年");
 		doctor1.setWorkAge(12);
-		
+		doctor1.setPreTimePatient(5);
+
 		Doctor doctor2 = new Doctor();
 		doctor2.setAge(45);
 		doctor2.setName("终南山");
@@ -90,25 +85,30 @@ public class TestInitServlet extends HttpServlet {
 		doctor2.setTitle(title2);
 		doctor2.setDescription("抗击非典英雄");
 		doctor2.setWorkAge(20);
+		doctor2.setPreTimePatient(3);
 
 		Patient patient = new Patient();
 		patient.setAccount("lidong");
 		patient.setName("LiDong");
 		patient.setPassword("123456");
 		patient.setAge(23);
-		patient.setSex(Person.MALE);
+		patient.setSex(Person.FEMALE);
+		patient.setBankAccount("123456789654123");
 
 		TimeQuantum timeQuantum = new TimeQuantum(15, 00);
 		timeQuantum.setId("1");
+		TimeQuantum timeQuantum2 = new TimeQuantum(8, 00);
+		timeQuantum2.setId("2");
 
 		Registration registration = new Registration();
+		registration.setHasPay(true);
 		registration.setDoctor(doctor1);
 		registration.setTimeQuantum(timeQuantum);
 		registration.setPatient(patient);
 
 		try {
-			Dao.save(hospital, hospital2, department1, department2, title1, doctor1, patient, timeQuantum,
-					registration);
+			Dao.save(hospital, hospital2, department1, department2, title1, title2, doctor1, doctor2, patient,
+					timeQuantum, timeQuantum2, registration);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -122,13 +122,6 @@ public class TestInitServlet extends HttpServlet {
 						.append("<br/>");
 			}
 		}
-		hospital3.setAddress("深圳市莆田系");
-		try {
-			Dao.update(hospital3);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

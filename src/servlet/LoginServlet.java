@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("id", patients.get(0).getId());
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/loginSuccess.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/personal.jsp");
 			rd.forward(request, response);
 		}else {
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
