@@ -1,0 +1,143 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    text-align: center;
+    background-color: #f1f3e0;
+}
+
+#manager{
+  font-size: 1.2em;
+  margin-top: 16;
+  margin-left: -180;
+}
+
+.main{
+	margin：0 auto；
+	width: 1000;
+  height: 500;
+}
+
+.login-img {
+	display: inline-block;
+vertical-align:top;
+}
+
+
+#contact {
+  vertical-align:top;
+	border:solid #e8f3e0 1px;
+	display:inline-block;
+	width: 404;
+  height: 404;
+  background: #fff;
+}
+
+#contact h2 {
+  height: 50;
+  margin-top: 0;
+  font-size: 2em;
+  font-weight: 500;
+  color: #fff;
+  background: #32AAF7;
+  padding: 0.7em 0em;
+  padding-left: 0.5em;
+  border-bottom: 5px solid #0072bc;
+  border-radius: 5px 5px 5px 5px;
+}
+
+#contact input[type="text"] {
+  outline: none;
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #000;
+  padding: 10px 10px 10px 30px;
+  border: 2px solid #ccc;
+  width: 90%;
+  margin: 0em 0em 0.5em 0em;
+  border-radius: 5px;
+}
+
+#contact input[type="text"]:hover {
+  border:2px solid #0072bc;
+  transition: 0.5s all;
+  -webkit-transition: 0.5s all;
+  -moz-transition: 0.5s all;
+  -o-transition: 0.5s all;
+}
+
+#groupInputs {
+  padding: 1em 2em 1em 1em;
+}
+
+#groupInputs ul{list-style-type: none;}
+
+#groupInputs input[name="Userame"] {
+  background: url(images/user.png)no-repeat 5px 8px;
+}
+
+#groupInputs input[name="Password"] {
+  background: url(images/Password.png)no-repeat 5px 8px;
+}
+
+.button {
+  padding: 1em 2em;
+  background: #F0F0F0;
+  border-top: 2px solid #ccc;
+  text-align: right;
+  border-radius: 5px 5px 5px 5px;
+}
+
+//#buttons button[type="submit"] {
+  font-size: 0.85em;
+  font-weight: 400;
+  color: #fff;
+  background: #1D92DD;
+  border: none;
+  padding: 1em 3em;
+  border-radius: 3px;
+   -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  cursor:pointer;
+  font-family: 'Open Sans', sans-serif;
+  border-bottom: 5px solid #0072bc;
+}
+#buttons  button:hover {
+  background: #0072bc;
+  border-bottom:5px solid #1D92DD;
+  transition: 0.5s all;
+}
+
+#contact a{font-size: 0.1em;}
+
+.link{margin-right: -180;
+margin-top: 25;}
+
+#footer{
+  font-size: 0.2em;
+	display: block;
+margin-top: 4em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

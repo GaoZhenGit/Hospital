@@ -1,0 +1,61 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/Login.css">
+	<link rel= "shortcut icon " href= "images/hospital.png" type="image/png">
+	<script language="JavaScript" src="js/Login.js"></script>
+	<title>hospital Login</title>
+</head>
+<body>
+<div style="width: 200;height:100"></div>
+<div class="main">
+	<div class="login-img" ><img src="images/2.jpg" alt="轻松挂号，智慧医疗" height="404" width="505"/></div>
+
+	<div id="contact">
+		<h2>用户登录</h2>
+		<form function="" onsubmit="return check()">
+			<div id="groupInputs" >
+				<ul class="form-content">
+					<li>
+						<input class="type" id="b1" type="text" value="User Name" name="Userame" onfocus="if (this.value == 'User Name') {this.value = '';}" onblur="if (this.value == '') {this.value = 'User Name';}" required=""></input>
+						
+					</li>
+					<li>
+						<input class="type" id="b2" type="text" value="Password" name="Password" onfocus="if (this.value =='Password') {this.value = '';}" onblur="if (this.value =='') {this.value = 'Password';}" style="margin-top: 20;"></input>
+					</li>
+					<li id="manager">
+						管理员：<input type="checkbox" name="manager" value="true"></input>
+					</li>
+				</ul>
+			</div>
+			<div id="buttons">
+				<button type="submit" class="button">登录</button>
+				<button type="reset" class="button" style="margin-left: 30">取消</button>
+			</div>
+			<div class="link">			
+				<a id="register" href="">立即注册</a>
+				<a id="register" href="">忘记密码？</a>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+
+
+<div id="footer">
+	<footer>
+		<span>© 2016 广州市统一预约挂号平台</span>
+		<span class="dot">·</span>
+		<a target="_blank" href="http://baike.baidu.com/subview/3003456/3003456.htm">网上挂号</a>
+		<span class="dot">·</span>
+		<span class="dot">·</span>
+		<span class="dot">·</span>
+		<a href="http://www.miibeian.gov.cn/" target="_blank">粤 ICP 备 13052560 号</a>
+		<span>·</span>
+		<span>粤公网安备 11010802010035 号</span>
+	</footer>
+</div>
+</body>
+</html>

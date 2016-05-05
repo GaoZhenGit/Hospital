@@ -19,7 +19,7 @@ import model.Registration;
 import model.TimeQuantum;
 import model.Title;
 
-@WebServlet("/testInit.html")
+@WebServlet("/testInit")
 public class TestInitServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
