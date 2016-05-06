@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/Login.css">
 	<link rel= "shortcut icon " href= "images/hospital.png" type="image/png">
+	<script language="JavaScript" src="js/jquery-2.0.0.js"></script>
 	<script language="JavaScript" src="js/Login.js"></script>
 	<title>hospital Login</title>
 </head>
@@ -14,23 +15,23 @@
 
 	<div id="contact">
 		<h2>用户登录</h2>
-		<form function="" onsubmit="return check()">
+		<form id="form" action="post">
 			<div id="groupInputs" >
 				<ul class="form-content">
 					<li>
-						<input class="type" id="b1" type="text" value="User Name" name="Userame" onfocus="if (this.value == 'User Name') {this.value = '';}" onblur="if (this.value == '') {this.value = 'User Name';}" required=""></input>
+						<input class="type" id="b1" type="text" value="User Name" name="account" onfocus="if (this.value == 'User Name') {this.value = '';}" onblur="if (this.value == '') {this.value = 'User Name';}" ></input>
 						
 					</li>
 					<li>
-						<input class="type" id="b2" type="text" value="Password" name="Password" onfocus="if (this.value =='Password') {this.value = '';}" onblur="if (this.value =='') {this.value = 'Password';}" style="margin-top: 20;"></input>
+						<input class="type" id="b2" type="text" value="Password" name="password" onfocus="if (this.value =='Password') {this.value = '';}" onblur="if (this.value =='') {this.value = 'Password';}" style="margin-top: 20;"></input>
 					</li>
 					<li id="manager">
-						管理员：<input type="checkbox" name="manager" value="true"></input>
+						管理员：<input id="check" type="checkbox" name="manager" value="true"></input>
 					</li>
 				</ul>
 			</div>
 			<div id="buttons">
-				<button type="submit" class="button">登录</button>
+				<button id="loginBtn" type="button" class="button">登录</button>
 				<button type="reset" class="button" style="margin-left: 30">取消</button>
 			</div>
 			<div class="link">			
