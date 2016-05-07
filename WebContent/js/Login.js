@@ -16,9 +16,9 @@ function login() {
 $(document).ready(function() {
 	$("#loginBtn").click(function() {
 		var isAdmin = document.getElementById('check').checked;
+		var a = document.getElementById('b1').value;
+		var b = document.getElementById('b2').value;
 		if (isAdmin) {
-			var a = document.getElementById('b1').value;
-			var b = document.getElementById('b2').value;
 			$.post("/Hospital/HospitalLogin", {
 				account : a,
 				password : b
@@ -32,7 +32,16 @@ $(document).ready(function() {
 				}
 			});
 		} else {
-			alert('apt');
+			$.post("/Hospital/PatientLoginServlet", {
+				phone : a,
+				password : b
+			}, function(data, status) {
+				if (status == 'success') {
+					var arrStr = document.cookie.split(";");
+					alert(arrStr[0]);
+					window.location.href = "/Hospital/Register.jsp"
+				}
+			});
 		}
 	})
 });
