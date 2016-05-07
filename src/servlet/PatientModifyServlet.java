@@ -80,6 +80,8 @@ public class PatientModifyServlet extends BaseServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		response.sendRedirect(request.getContextPath() + "/PatientModify.jsp");
 	}
 
 }

@@ -11,7 +11,7 @@
 	<%
 		String hospitalId = (String) request.getSession(true).getAttribute("hospital");
 		if (hospitalId == null) {
-			response.sendRedirect(request.getContextPath() + "/HospitalLogin.jsp");
+			response.sendRedirect(request.getContextPath() + "/Login.html");
 			return;
 		}
 		Hospital hospital = Dao.getById(hospitalId, Hospital.class);
