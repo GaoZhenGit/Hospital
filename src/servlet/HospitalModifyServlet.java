@@ -14,6 +14,8 @@ import model.Hospital;
 @WebServlet("/HospitalModify.html")
 public class HospitalModifyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private static final String HospitalPages = "/HospitalPages.jsp";
 
 	public HospitalModifyServlet() {
 		super();
@@ -21,7 +23,7 @@ public class HospitalModifyServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath() + "/HospitalPage.jsp");
+		response.sendRedirect(request.getContextPath() + HospitalPages);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -41,7 +43,7 @@ public class HospitalModifyServlet extends HttpServlet {
 		modifyHospital(request, response, hospital);
 		// }
 
-		response.sendRedirect(request.getContextPath() + "/HospitalPage.jsp");
+		response.sendRedirect(request.getContextPath() + HospitalPages);
 	}
 
 	private void modifyHospital(HttpServletRequest request, HttpServletResponse response, Hospital hospital) {

@@ -25,7 +25,7 @@ $(document).ready(function() {
 			}, function(data, status) {
 				if (status == 'success') {
 					if (data == 'success') {
-						window.location.href = "/Hospital/HospitalPage.jsp"
+						window.location.href = "/Hospital/HospitalPages.jsp"
 					} else {
 						alert("密码错误");
 					}

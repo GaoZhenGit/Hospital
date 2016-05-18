@@ -18,6 +18,8 @@ import model.Hospital;
 public class DepartmentServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	private static final String HospitalPages = "/HospitalPages.jsp";
 
 	public DepartmentServlet() {
 		super();
@@ -25,7 +27,7 @@ public class DepartmentServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath() + "/HospitalPage.jsp");
+		response.sendRedirect(request.getContextPath() + HospitalPages);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,7 +45,7 @@ public class DepartmentServlet extends HttpServlet {
 
 		String type = request.getParameter("type");
 		if (type == null || type.length() == 0) {
-			response.sendRedirect(request.getContextPath() + "/HospitalLogin.jsp");
+			response.sendRedirect(request.getContextPath() + HospitalPages);
 			return;
 		}
 
@@ -55,7 +57,7 @@ public class DepartmentServlet extends HttpServlet {
 			deleteDepartment(request, response);
 		}
 
-		response.sendRedirect(request.getContextPath() + "/HospitalPage.jsp");
+		response.sendRedirect(request.getContextPath() + HospitalPages);
 	}
 
 	private void addDepartment(HttpServletRequest request, HttpServletResponse response, Hospital hospital) {
