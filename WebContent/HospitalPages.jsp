@@ -139,14 +139,15 @@
 
 		<div id="password">
 			<h2>密码修改</h2>
-			<form onsubmit="return check()">
+			<form onsubmit="return check()" action="HospitalModify.html"
+				method="post">
 				<ul>
 					<li><label>旧密码&nbsp:</label> <input type="password"
-						required="required" name="old-password"></input></li>
-					<li><label>新密码&nbsp:</label> <input id="b1" type="password"
-						required="required" name="new-password"></input></li>
-					<li><label>确认密码:</label> <input id="b2" type="password"
 						required="required"></input></li>
+					<li><label>新密码&nbsp:</label> <input id="b1" type="password"
+						required="required"></input></li>
+					<li><label>确认密码:</label> <input id="b2" type="password"
+						required="required" name="password"></input></li>
 				</ul>
 				<button type="submit">确认</button>
 				<button type="reset">重填</button>
