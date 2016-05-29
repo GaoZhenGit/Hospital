@@ -118,7 +118,7 @@
 					<%
 						for (Department department : hospital.getDepartments()) {
 					%>
-					<tr>
+					<tr id="<%=department.getId() %>">
 						<td><input disabled="disabled"
 							value="<%=department.getName()%>"></input></td>
 						<td><textarea disabled="disabled"><%=department.getDescription()%></textarea></td>

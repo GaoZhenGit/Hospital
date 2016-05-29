@@ -4,14 +4,14 @@ $(document).ready(function() {
 });
 $("#first").css("display","block");
 $(function(){   
-    //顶部导航切换
+    // 顶部导航切换
     $("#list li").click(function(){
         $("#list li.active").removeClass("active");
         $(this).addClass("active");
     })  
 
     $("#list li").click(function(){
-        //alert($(this).children("a").children("label").html());
+        // alert($(this).children("a").children("label").html());
         $("#first").css("display","none");
         $("#div").css("display","none");
         $("#depart").css("display","none");
@@ -49,11 +49,11 @@ function sec_add() {
         document.getElementById("sec").appendChild(trObj);
     }
 
-function deleteRow(tableID, obj) {//参数为表格ID，触发对象
-    //获得触发对象的行号，parentElement的个数取决于触发对象为TR的第几级子项，input=>td=>tr，所以parentElement有两个
+function deleteRow(tableID, obj) {// 参数为表格ID，触发对象
+    // 获得触发对象的行号，parentElement的个数取决于触发对象为TR的第几级子项，input=>td=>tr，所以parentElement有两个
     var rowIndex = obj.parentElement.parentElement.rowIndex;
-    //var table = document.getElementById(tableID).deleteRow(rowIndex);
-    obj.parentElement.parentElement.parentElement.deleteRow(rowIndex); //再简化：省略tableID参数
+    // var table = document.getElementById(tableID).deleteRow(rowIndex);
+    obj.parentElement.parentElement.parentElement.deleteRow(rowIndex); // 再简化：省略tableID参数
 }
 
 function removeRow(inputobj)  
@@ -62,19 +62,40 @@ function removeRow(inputobj)
     var parentTD = inputobj.parentNode;  
     var parentTR = parentTD.parentNode;  
     var parentTBODY = parentTR.parentNode;  
-    parentTBODY.removeChild(parentTR);  
+// parentTBODY.removeChild(parentTR);
+// alert(parentTR.id);
+//	$.post("/Hospital/Department.html", {
+//		type : 'delete',
+//		id : parentTR.id
+//	}, function(data, status) {
+//		if (status == 'success') {
+//			alert('success');
+//			refresh();
+//		}
+//	});
+	$.ajax({
+		  type:'POST',
+		  data:{
+			type : 'delete',
+			id : parentTR.id},
+		  url: "/Hospital/Department.html",
+		  success: function(data) {
+		     alert('操作成功');
+		  }
+		});
+	refresh();
 } 
 
 function refresh()  
 {  
-    window.location.href='医院信息修改.html';
+    window.location.href='HospitalPages.jsp';
 } 
 
 
-//用于弹出表单var diag = new Dialog();
+// 用于弹出表单var diag = new Dialog();
 
 $(function ($) {
-        //弹出登录
+        // 弹出登录
         $("#example").hover(function () {
             $(this).stop().animate({
                 opacity: '1'
@@ -89,7 +110,7 @@ $(function ($) {
             $("#LoginBox").fadeIn("slow");
         });
         //
-        //按钮的透明度
+        // 按钮的透明度
         $("#loginbtn").hover(function () {
             $(this).stop().animate({
                 opacity: '1'
@@ -99,7 +120,7 @@ $(function ($) {
                 opacity: '0.8'
             }, 1000);
         });
-        //文本框不允许为空---按钮触发
+        // 文本框不允许为空---按钮触发
         $("#loginbtn").on('click', function () {
             var txtName = $("#txtName").val();
             var txtPwd = $("#txtPwd").val();
@@ -122,7 +143,7 @@ $(function ($) {
                 }
             }
         });
-        //文本框不允许为空---单个文本触发
+        // 文本框不允许为空---单个文本触发
         $("#txtName").on('blur', function () {
             var txtName = $("#txtName").val();
             if (txtName == "" || txtName == undefined || txtName == null) {
@@ -148,7 +169,7 @@ $(function ($) {
         $("#txtPwd").on('focus', function () {
             $("#warn2").css({ display: 'none' });
         });
-        //关闭
+        // 关闭
         $(".close_btn").hover(function () { $(this).css({ color: 'black' }) }, function () { $(this).css({ color: '#999' }) }).on('click', function () {
             $("#LoginBox").fadeOut("fast");
             $("#mask").css({ display: 'none' });
@@ -162,7 +183,7 @@ $(function ($) {
 
 
 $(function ($) {
-        //弹出登录
+        // 弹出登录
         $("#example1").hover(function () {
             $(this).stop().animate({
                 opacity: '1'
@@ -177,7 +198,7 @@ $(function ($) {
             $("#LoginBox1").fadeIn("slow");
         });
         //
-        //按钮的透明度
+        // 按钮的透明度
         $("#loginbtn1").hover(function () {
             $(this).stop().animate({
                 opacity: '1'
@@ -187,7 +208,7 @@ $(function ($) {
                 opacity: '0.8'
             }, 1000);
         });
-        //文本框不允许为空---按钮触发
+        // 文本框不允许为空---按钮触发
         $("#loginbtn1").on('click', function () {
             var txtName1 = $("#txtName1").val();
             var txtPwd = $("#txtPwd").val();
@@ -210,7 +231,7 @@ $(function ($) {
                 }
             }
         });
-        //文本框不允许为空---单个文本触发
+        // 文本框不允许为空---单个文本触发
         $("#txtName1").on('blur', function () {
             var txtName1 = $("#txtName1").val();
             if (txtName1 == "" || txtName1 == undefined || txtName1 == null) {
@@ -236,7 +257,7 @@ $(function ($) {
         $("#txtPwd").on('focus', function () {
             $("#warn12").css({ display: 'none' });
         });
-        //关闭
+        // 关闭
         $(".close_btn").hover(function () { $(this).css({ color: 'black' }) }, function () { $(this).css({ color: '#999' }) }).on('click', function () {
             $("#LoginBox1").fadeOut("fast");
             $("#mask").css({ display: 'none' });
