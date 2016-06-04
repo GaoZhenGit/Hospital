@@ -62,7 +62,14 @@ function removeRow(inputobj)
     var parentTD = inputobj.parentNode;  
     var parentTR = parentTD.parentNode;  
     var parentTBODY = parentTR.parentNode;  
-    parentTBODY.removeChild(parentTR);  
+//    parentTBODY.removeChild(parentTR); 
+//    alert(parentTR.id);
+    $.post("Department.html", {
+		type : "delete",
+		id : parentTR.id
+	}, function(data, status) {
+		alert(data);
+	});
 } 
 
 function refresh()  
