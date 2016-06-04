@@ -62,28 +62,14 @@ function removeRow(inputobj)
     var parentTD = inputobj.parentNode;  
     var parentTR = parentTD.parentNode;  
     var parentTBODY = parentTR.parentNode;  
-// parentTBODY.removeChild(parentTR);
-// alert(parentTR.id);
-//	$.post("/Hospital/Department.html", {
-//		type : 'delete',
-//		id : parentTR.id
-//	}, function(data, status) {
-//		if (status == 'success') {
-//			alert('success');
-//			refresh();
-//		}
-//	});
-	$.ajax({
-		  type:'POST',
-		  data:{
-			type : 'delete',
-			id : parentTR.id},
-		  url: "/Hospital/Department.html",
-		  success: function(data) {
-		     alert('操作成功');
-		  }
-		});
-	refresh();
+//    parentTBODY.removeChild(parentTR); 
+//    alert(parentTR.id);
+    $.post("Department.html", {
+		type : "delete",
+		id : parentTR.id
+	}, function(data, status) {
+		alert(data);
+	});
 } 
 
 function refresh()  
