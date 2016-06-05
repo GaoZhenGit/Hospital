@@ -39,10 +39,8 @@
 			<li class="active"><a href="#"><i class="fa fa-home"></i><label>医院资料</label>
 			</a></li>
 			<hr />
-			<li><a href="#"><i class="fa fa-home"></i><label>医院信息</label>
+			<li><a href="#"><i class="fa fa-home"></i><label>信息修改</label>
 			</a></li>
-			<hr />
-			<li><a href="#"><i class="fa fa-home"></i><label>医院部门</label></a></li>
 			<hr />
 			<li><a href="#"><i class="fa fa-home"></i><label>医院科室</label></a></li>
 			<hr />
@@ -67,7 +65,7 @@
 		</div>
 
 		<div id="div">
-			<h2>医院信息</h2>
+			<h2>信息修改</h2>
 			<form action="HospitalModify.html" method="post" charset="utf8">
 				<ul style="list-style-type: none;">
 					<li><label>医院名称</label> <input type="text" name="name"></input></li>
@@ -81,29 +79,6 @@
 					<button type="reset">取消</button>
 				</div>
 			</form>
-		</div>
-
-		<div id="depart">
-			<h2>医院部门</h2>
-			<form>
-				<table id="department">
-					<tr>
-						<td><h3>部门名称</h3></td>
-						<td><h3>部门介绍</h3></td>
-						<td><h3>操作</h3></td>
-					</tr>
-					<tr>
-						<td><input required="required" disabled="disabled"> </input></td>
-						<td><textarea required="required" disabled="disabled"></textarea></td>
-						<td><button onClick="removeRow(this)">删除</button></td>
-					</tr>
-				</table>
-				<button style="margin-top: 15; margin-left: -70;" id="example1"
-					onclick="example1()">增加</button>
-				<button type="submit">确认</button>
-			</form>
-			<button onclick="refresh()"
-				style="margin-right: -135; margin-top: -56">取消</button>
 		</div>
 
 		<div id="section">

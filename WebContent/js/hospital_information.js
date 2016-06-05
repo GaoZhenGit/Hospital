@@ -14,12 +14,10 @@ $(function(){
         // alert($(this).children("a").children("label").html());
         $("#first").css("display","none");
         $("#div").css("display","none");
-        $("#depart").css("display","none");
         $("#section").css("display","none");
         $("#password").css("display","none");
         if ($(this).children("a").children("label").html()=="医院资料") {$("#first").css("display","block");}
-        if ($(this).children("a").children("label").html()=="医院信息") {$("#div").css("display","block");}
-        if ($(this).children("a").children("label").html()=="医院部门") {$("#depart").css("display","block");}
+        if ($(this).children("a").children("label").html()=="信息修改") {$("#div").css("display","block");}
         if ($(this).children("a").children("label").html()=="医院科室") {$("#section").css("display","block");}
         if ($(this).children("a").children("label").html()=="密码修改") {$("#password").css("display","block");}
     })
