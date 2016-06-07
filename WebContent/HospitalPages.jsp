@@ -44,6 +44,8 @@
 			<hr />
 			<li><a href="#"><i class="fa fa-home"></i><label>医院科室</label></a></li>
 			<hr />
+			<li><a href="#"><i class="fa fa-home"></i><label>医护人员</label></a></li>
+			<hr />
 			<li><a href="#"><i class="fa fa-home"></i><label>密码修改</label></a></li>
 		</ul>
 	</div>
@@ -112,6 +114,27 @@
 				style="margin-right: -135; margin-top: -56">取消</button>
 		</div>
 
+		<div id="depart">
+			<h2>医生信息</h2>
+			<form>
+				<table id="department">
+					<tr>
+						<td><h3>医生姓名</h3></td>
+						<td><h3>医生介绍</h3></td>
+						<td><h3>操作</h3></td>
+					</tr>
+					<tr>
+						<td><input  required="required" disabled="disabled"> </input></td>
+						<td><textarea  required="required" disabled="disabled"></textarea></td>
+						<td><button onClick="removeRow(this)">删除</button></td>
+					</tr>
+				</table>
+				<button type="button" style="margin-top: 15;margin-left:-70;" id="example1" onclick="example1()">增加</button>
+				
+			 </form>
+			 
+		</div>
+
 		<div id="password">
 			<h2>密码修改</h2>
 			<form onsubmit="return check()" action="HospitalModify.html"
@@ -160,16 +183,16 @@
 	<div id="LoginBox1">
 		<form action="" method="post" charset="utf8">
 			<div class="row1">
-				添加医院部门窗口<a href="javascript:void(0)" title="关闭窗口" class="close_btn"
+				添加医院医生窗口<a href="javascript:void(0)" title="关闭窗口" class="close_btn"
 					id="closeBtn1">×</a>
 			</div>
 			<div class="row">
-				部门名称： <span class="inputBox"> <input type="text"
+				医生名称： <span class="inputBox"> <input type="text"
 					id="txtName1" required="required" placeholder="名称" name="name" />
 				</span><a href="javascript:void(0)" title="提示" class="warning" id="warn1"></a>
 			</div>
 			<div class="row">
-				<label> &nbsp&nbsp部门描述：</label>
+				<label> &nbsp&nbsp医生介绍：</label>
 				<textarea required="required" placeholder="描述" name="description"></textarea>
 			</div>
 			<div class="row">
