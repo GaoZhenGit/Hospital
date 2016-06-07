@@ -74,10 +74,11 @@ public class DoctorServlet extends HttpServlet {
 		String sex = request.getParameter("sex");
 		String workAge = request.getParameter("workage");
 		String description = request.getParameter("description");
+		String preTimePatient = request.getParameter("preTimePatient");
 		String titleName = request.getParameter("title");
 
 		if (isEmpty(name) || isEmpty(age) || isEmpty(workAge) || isEmpty(description) || isEmpty(titleName)
-				|| isEmpty(sex)) {
+				|| isEmpty(sex) || isEmpty(preTimePatient)) {
 			System.err.println("empty");
 			System.err.println(isEmpty(name));
 			System.err.println(isEmpty(age));
@@ -85,6 +86,7 @@ public class DoctorServlet extends HttpServlet {
 			System.err.println(isEmpty(description));
 			System.err.println(isEmpty(titleName));
 			System.err.println(isEmpty(sex));
+			System.err.println(isEmpty(preTimePatient));
 			return;
 		}
 

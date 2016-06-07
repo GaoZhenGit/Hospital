@@ -1,6 +1,6 @@
 <%@page import="model.Department"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8" import="model.*" import="hibernate.Dao"%>
+	pageEncoding="utf-8" import="model.*" import="hibernate.Dao" import="java.util.*"%>
 <!DOCTYPE <!DOCTYPE html>
 <html>
 <head>
@@ -99,7 +99,8 @@
 						<td><input disabled="disabled"
 							value="<%=department.getName()%>"></input></td>
 						<td><textarea disabled="disabled"><%=department.getDescription()%></textarea></td>
-						<td><button onClick="removeRow(this)" value="<%=department.getId()%>">删除</button></td>
+						<td><button onClick="removeRow(this)"
+								value="<%=department.getId()%>">删除</button></td>
 					</tr>
 					<%
 						}
@@ -116,24 +117,46 @@
 
 		<div id="depart">
 			<h2>医生信息</h2>
-			<form>
+			<form action="Doctor.html">
 				<table id="department">
 					<tr>
-						<td><h3>医生姓名</h3></td>
-						<td><h3>医生介绍</h3></td>
+						<td><h3 id="name1">医生姓名</h3></td>
+						<td><h3>所属科室</h3></td>
+						<td><h3>医生年龄</h3></td>
+						<td><h3>医生性别</h3></td>
+						<td><h3>医生工龄</h3></td>
+						<td><h3 id="describe1">医生介绍</h3></td>
+						<td><h3>时间段会诊数</h3></td>
 						<td><h3>操作</h3></td>
 					</tr>
-					<tr>
-						<td><input  required="required" disabled="disabled"> </input></td>
-						<td><textarea  required="required" disabled="disabled"></textarea></td>
-						<td><button onClick="removeRow(this)">删除</button></td>
+					<%
+						for (Department department : hospital.getDepartments()) {
+							for (Doctor doctor : department.getDoctors()) {
+					%>
+					<tr id="<%=doctor.getId()%>">
+						<td><label><%=doctor.getName()%></label></td>
+						<td><label><%=department.getName()%></label></td>
+						<td><label><%=doctor.getAge()%></label></td>
+						<td><label><%=doctor.getSex() == 1 ? "男" : "女"%></label></td>
+						<td><label><%=doctor.getWorkAge()%></label></td>
+						<td><textarea><%=doctor.getDescription()%></textarea></td>
+						<td><label><%=doctor.getPreTimePatient()%></label></td>
+						<td><button onClick="removeRowDoctor(this)">
+								删除
+								<tton></td>
 					</tr>
+					<%
+						}
+						}
+					%>
 				</table>
-				<button type="button" style="margin-top: 15;margin-left:-70;" id="example1" onclick="example1()">增加</button>
-				
-			 </form>
-			 
+				<button type="button" style="margin-top: 15; margin-left: -70;"id="example1" onclick="example1()">
+					增加
+				</button>
+			</form>
+
 		</div>
+
 
 		<div id="password">
 			<h2>密码修改</h2>
@@ -181,14 +204,59 @@
 	</div>
 
 	<div id="LoginBox1">
-		<form action="" method="post" charset="utf8">
+		<form action="Doctor.html" method="post" charset="utf8">
 			<div class="row1">
 				添加医院医生窗口<a href="javascript:void(0)" title="关闭窗口" class="close_btn"
 					id="closeBtn1">×</a>
 			</div>
 			<div class="row">
-				医生名称： <span class="inputBox"> <input type="text"
+				医生姓名： <span class="inputBox"> <input type="text"
 					id="txtName1" required="required" placeholder="名称" name="name" />
+				</span><a href="javascript:void(0)" title="提示" class="warning" id="warn1"></a>
+			</div>
+			<div class="row">
+				所属科室： 
+				<span class="inputBox">
+				<select name="department">
+				<%for(Department department :hospital.getDepartments()) {%>
+					<option value="<%=department.getId()%>"><%=department.getName() %></option>
+				<%} %>
+				</select>
+				</span><a href="javascript:void(0)" title="提示" class="warning" id="warn1"></a>
+			</div>
+			<div class="row">
+				医生年龄： <span class="inputBox"> <input type="text"
+					id="txtName1" required="required" placeholder="名称" name="age" />
+				</span><a href="javascript:void(0)" title="提示" class="warning" id="warn1"></a>
+			</div>
+			<div class="row">
+				医生性别： <span class="inputBox">
+				<select name="sex">
+					<option value="1">男</option>
+					<option value="0">女</option>
+				</select>
+				</span><a href="javascript:void(0)" title="提示" class="warning" id="warn1"></a>
+			</div>
+			<div class="row">
+				医生工龄： <span class="inputBox"> <input type="text"
+					id="txtName1" required="required" placeholder="名称" name="workage" />
+				</span><a href="javascript:void(0)" title="提示" class="warning" id="warn1"></a>
+			</div>
+			<div class="row">
+				医生职称： <span class="inputBox"> 
+				<select name="title">
+				<%  List<Title> titles = Dao.getAll(Title.class);
+					for(Title title : titles) {
+				%>
+					<option value="<%=title.getName()%>"><%=title.getName()%></option>
+				<%} %>
+				</select>
+				</span><a href="javascript:void(0)" title="提示" class="warning" id="warn1"></a>
+			</div>
+
+			<div class="row">
+				时间段会诊数： <span class="inputBox"> <input type="text"
+					id="txtName1" required="required" placeholder="名称" name="preTimePatient" />
 				</span><a href="javascript:void(0)" title="提示" class="warning" id="warn1"></a>
 			</div>
 			<div class="row">
@@ -196,6 +264,7 @@
 				<textarea required="required" placeholder="描述" name="description"></textarea>
 			</div>
 			<div class="row">
+				<input type="hidden" name="type" value="add"/>
 				<button type="submit" id="loginbtn">确认</button>
 				<button type="reset">取消</button>
 			</div>
