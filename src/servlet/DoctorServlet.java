@@ -21,6 +21,8 @@ import model.Title;
 public class DoctorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private static final String HospitalPages = "/HospitalPages.jsp";
+
 	public DoctorServlet() {
 		super();
 	}
@@ -38,30 +40,32 @@ public class DoctorServlet extends HttpServlet {
 
 		String hospitalId = (String) request.getSession(true).getAttribute("hospital");
 		if (hospitalId == null) {
-			response.sendRedirect(request.getContextPath() + "/HospitalLogin.jsp");
+			response.sendRedirect(request.getContextPath() + "/Login.html");
 			return;
 		}
 		Hospital hospital = Dao.getById(hospitalId, Hospital.class);
 
 		String type = request.getParameter("type");
-		if (type.equals("add")) {
-			Department department = null;
-			String departmentId = request.getParameter("department");
-			for (Department d : hospital.getDepartments()) {
-				if (d.getId().equals(departmentId)) {
-					department = d;
-					break;
+		if (type != null) {
+			if (type.equals("add")) {
+				Department department = null;
+				String departmentId = request.getParameter("department");
+				for (Department d : hospital.getDepartments()) {
+					if (d.getId().equals(departmentId)) {
+						department = d;
+						break;
+					}
 				}
+				if (department != null) {
+					addDoctor(request, response, department);
+				}
+			} else if (type.equals("modify")) {
+				modifyDoctor(request, response);
+			} else if (type.equals("delete")) {
+				deleteDoctor(request, response);
 			}
-			if (department != null) {
-				addDoctor(request, response, department);
-			}
-		} else if (type.equals("modify")) {
-			modifyDoctor(request, response);
-		} else if (type.equals("delete")) {
-			deleteDoctor(request, response);
 		}
-		response.sendRedirect(request.getContextPath() + "/HospitalPage.jsp");
+		response.sendRedirect(request.getContextPath() + HospitalPages);
 	}
 
 	private void addDoctor(HttpServletRequest request, HttpServletResponse response, Department department) {
