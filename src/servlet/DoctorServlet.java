@@ -103,6 +103,7 @@ public class DoctorServlet extends HttpServlet {
 			doctor.setTitle(title);
 			doctor.setWorkAge(Integer.parseInt(workAge));
 			doctor.setDepartment(department);
+			doctor.setPreTimePatient(Integer.parseInt(preTimePatient));
 			doctor.setDescription(description);
 			Dao.save(doctor);
 		} catch (Exception e) {

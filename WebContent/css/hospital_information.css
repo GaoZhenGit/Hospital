@@ -90,7 +90,7 @@ body{text-align: center;}
 	margin-top: 40;
 }
 
-#div,#depart,#section,#password{
+#div,#depart,#password{
 	width: 400;
 	border: solid 1px blue;
 	padding: 40;
@@ -100,6 +100,17 @@ body{text-align: center;}
 	border-radius: 5px;
 	text-align: center;
 
+}
+
+#section{
+	width: 500;
+	border: solid 1px blue;
+	padding: 40;
+	margin: 0 auto;
+	margin-bottom: 20;
+	display: none;
+	border-radius: 5px;
+	text-align: center;
 }
 
 #div li{margin: 15;}

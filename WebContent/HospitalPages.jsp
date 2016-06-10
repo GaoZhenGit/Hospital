@@ -90,7 +90,7 @@
 					<tr>
 						<td><h3>科室名称</h3></td>
 						<td><h3>科室介绍</h3></td>
-						<td><h3>操作</h3></td>
+						<td colspan="2"><h3>操作</h3></td>
 					</tr>
 					<%
 						for (Department department : hospital.getDepartments()) {
@@ -101,6 +101,7 @@
 						<td><textarea disabled="disabled"><%=department.getDescription()%></textarea></td>
 						<td><button onClick="removeRow(this)"
 								value="<%=department.getId()%>">删除</button></td>
+						<td><button onClick="">修改</button>
 					</tr>
 					<%
 						}
@@ -127,7 +128,7 @@
 						<td><h3>医生工龄</h3></td>
 						<td><h3 id="describe1">医生介绍</h3></td>
 						<td><h3>时间段会诊数</h3></td>
-						<td><h3>操作</h3></td>
+						<td colspan="2"><h3>操作</h3></td>
 					</tr>
 					<%
 						for (Department department : hospital.getDepartments()) {
@@ -141,9 +142,8 @@
 						<td><label><%=doctor.getWorkAge()%></label></td>
 						<td><textarea><%=doctor.getDescription()%></textarea></td>
 						<td><label><%=doctor.getPreTimePatient()%></label></td>
-						<td><button onClick="removeRowDoctor(this)">
-								删除
-								<tton></td>
+						<td><button onClick="removeRowDoctor(this)">删除</button></td>
+						<td><button onClick="">修改</button>
 					</tr>
 					<%
 						}
