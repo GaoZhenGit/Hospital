@@ -68,28 +68,13 @@ function removeRow(inputobj)
 		type : "delete",
 		id : parentTR.id
 	}, function(data, status) {
-		refresh();
+		alert(data);
 	});
 } 
 
-function removeRowDoctor(inputobj) {
-	if(inputobj==null) return;  
-    var parentTD = inputobj.parentNode;  
-    var parentTR = parentTD.parentNode;  
-//    alert(parentTR.id);
-    $.post("Doctor.html", {
-		type : "delete",
-		id : parentTR.id
-	}, function(data, status) {
-		if(data == 'success')
-			refresh();
-	});
-    refresh();
-}
-
 function refresh()  
 {  
-    window.location.href='www.baidu.com';
+    window.location.href='HospitalPages.jsp';
 } 
 
 

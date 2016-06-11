@@ -16,9 +16,12 @@ public class BaseServlet extends HttpServlet {
 
     protected boolean isEmpty(String... strings){
     	for(String s:strings){
+    		int i=0;
 	    	if(s == null || s.length() == 0){
+	    		System.out.print(i);
 	    		return true;
 	    	}
+	    	i++;
     	}
     	return false;
     }

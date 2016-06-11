@@ -7,30 +7,23 @@
 	<link rel="stylesheet" type="text/css" href="css/register.css">
 	<title>Hospital Register</title>
 	<script language="JavaScript" src="js/jquery-2.0.0.js"></script>
-	<script type="text/javascript">
-		function check() {
-			// body...
-			var a=document.getElementById("p1").value;
-			var b=document.getElementById("p2").value;
-			if(a!=b){alert("两次密码不一致");return false;}
-			else return true;
-		}
-	</script>
+	<script language="JavaScript" src="js/Register.js"></script>
 </head>
 <body>
 		<div class="picture">
-			<img src="images/title.png">
+			<img src="images/title.jpg">
 			<img class="image" src="images/hourse.jpg" alt="picture of a hospital">
 
 		</div>
 		<div id="title">
 			<h1 id="subtitle">广东市预约挂号系统</h1>
 		</div>
-		<form onsubmit="return check()">
+		<form id="form" action="">
 			<div id="register">
 				<ul>
 					<li>
-						<label>&nbsp用户名：</label><input name="username" type="text" autofocus="autofocus" maxlength="20" required="required"></input>
+						<label>&nbsp用户名：</label>
+						<input name="username" id="b1" type="text" autofocus="autofocus" maxlength="20" required="required"></input>
 					</li>
 					<li>
 						<label>&nbsp性 别：</label>
@@ -41,7 +34,7 @@
 					</li>
 					<li>
 						<label>&nbsp年 龄：</label>
-						<input type="number" name="age" min="0" max="200" required="required"></input>
+						<input type="number" id="b2" name="age" min="0" max="200" required="required"></input>
 					</li>
 					<li>
 						<label>登录密码:</label>
@@ -52,7 +45,7 @@
 						<input type="password" id="p2" required="required"></input>						
 					</li>
 				</ul>
-				<input type="submit" id="submit" value="注册" ></input>
+				<input type="button" id="submit" value="注册" ></input>
 			</div>
 		</form>
 

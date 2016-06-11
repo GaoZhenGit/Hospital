@@ -73,7 +73,11 @@ public class Dao {
 		session.close();
 		return list;
 	}
-
+	/**
+	 * 更新已有的对象的参数值
+	 * @param objects
+	 * @throws Exception
+	 */
 	public static void update(Object... objects) throws Exception {
 		// 同一事务下更新一个或多个对象
 		SessionFactory sessionFactory = Factory.get();
@@ -87,7 +91,11 @@ public class Dao {
 		transaction.commit();
 		session.close();
 	}
-
+	/**
+	 * 保存创建的新的对象
+	 * @param tList
+	 * @throws Exception
+	 */
 	public static void save(Object... tList) throws Exception {
 		// 同一事务下保存一个或多个对象
 		SessionFactory sessionFactory = Factory.get();
@@ -113,7 +121,14 @@ public class Dao {
 		transaction.commit();
 		session.close();
 	}
-
+	/**
+	 * 获取所有的挂号单（可以是医生，也可以是病人的）
+	 * @param doctor 可空
+	 * @param patient 可空
+	 * @param timeQuantum
+	 * @return
+	 * @throws Exception
+	 */
 	public static List<Registration> getRegistrations(Doctor doctor, Patient patient, TimeQuantum timeQuantum)
 			throws Exception {
 		SessionFactory sessionFactory = Factory.get();

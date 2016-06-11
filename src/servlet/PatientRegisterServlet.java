@@ -1,5 +1,7 @@
 package servlet;
 
+import hibernate.Dao;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -10,23 +12,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import datamanage.PatientManage;
 
 import model.Patient;
 
-@WebServlet(name="PatientRegisterServlet",urlPatterns="/PatientRegisterServlet")
-public class PatientRegisterServlet extends HttpServlet {
+@WebServlet(name = "PatientRegisterServlet", urlPatterns = "/PatientRegisterServlet")
+public class PatientRegisterServlet extends BaseServlet {
 
 	/**
 	 * 
 	 */
+	private static final String returnPage = "/register.html";
 	private static final long serialVersionUID = -4693553661640688267L;
-	private Patient patient;
-	private String phone;
-	private String password;
-	private RequestDispatcher rd;
-	private boolean isRegister = false;
+
 	public PatientRegisterServlet() {
 		super();
 	}
@@ -35,14 +35,41 @@ public class PatientRegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(req);
-		processResponse(resp);
-		if(isRegister){
-			rd=getServletContext().getRequestDispatcher("/Register.jsp");
-			rd.forward(req, resp);
-		}else {
-			rd=getServletContext().getRequestDispatcher("/PatientRegister.jsp");
-			rd.forward(req, resp);
+		String name = req.getParameter("name");
+		String age = req.getParameter("age");
+		age = age.replaceAll(" ", "");
+		String password = req.getParameter("password");
+		String sex = req.getParameter("sex");
+		System.out.print("hah1");
+		if (isEmpty(name, password, age, sex)) {
+			resp.sendRedirect(req.getContextPath() + returnPage);
+			System.out.print("hah2");
+		} else {
+			System.out.print("hah3");
+			Patient patient = new Patient();
+			patient.setName(name);
+//			patient.setAge(Integer.parseInt(age));
+			if (sex.equals("man")) {
+				patient.setSex(1);
+			} else {
+				patient.setSex(0);
+			}
+			patient.setPassword(password);
+			try {
+				Dao.save(patient);
+				System.out.println("success");
+//				HttpSession session = req.getSession(true);
+//				session.setMaxInactiveInterval(30000);
+//				session.setAttribute("patient",
+//						Dao.getByName(name, Patient.class).getId());
+				// response.sendRedirect(request.getContextPath() +
+				// "/HospitalPage.jsp");
+				resp.getWriter().append("success");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				System.out.println("fail");
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -51,45 +78,5 @@ public class PatientRegisterServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(req, resp);
-	}
-
-	public void processRequest(HttpServletRequest req) {
-		try {
-			req.setCharacterEncoding("UTF-8");
-			phone = req.getParameter("phone");
-			password = req.getParameter("password");
-			if (null != phone && null != password) {
-				if(PatientManage.checkRegister(phone)){
-					patient = new Patient();
-					patient.setAccount(phone);
-					patient.setPassword(password);
-					PatientManage.saveData(patient);
-					isRegister = true;
-				}else {
-					req.setAttribute("err", "该用户名已存在！");
-				}
-			}else {
-				req.setAttribute("err", "用户名或者密码不能为空！");
-			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-	}
-	public void processResponse(HttpServletResponse resp) {
-//		try {
-//			if (isRegister) {
-//				resp.sendRedirect("Register.jsp");
-////				resp.setCharacterEncoding("UTF-8");
-////				resp.setContentType("text/html;charset=utf-8");
-////				PrintWriter out=resp.getWriter();
-////				out.append("注册成功！");
-////				out.close();
-//			}else {
-//				resp.sendRedirect("PatientRegister.jsp");
-//			}
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 	}
 }

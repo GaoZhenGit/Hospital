@@ -1,0 +1,53 @@
+#datetimepicker4{
+	
+}
+#showdd{
+	display: block;
+	display: inline-block;
+	width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#cooless{
+	width: 800px;
+    overflow: hidden;
+    border: 1px solid #f4f6fa;
+    margin: 0 auto;
+    margin-top: 0px;
+    min-height: 190px;
+        display: block;
+}
+.were{
+	margin-left: 70;
+    margin-top: 10;
+    font-size: 0.85em;
+    font-weight: 400;
+    background: #867979;
+    padding: 1em 2em;
+    background: #F0F0F0;
+    border-top: 2px solid #ccc;
+    text-align: right;
+    border-radius: 2px 5px 5px 5px;
+
+}
+
+.werew{
+	outline: none;
+    font-size: 1em;
+    font-weight: 400;
+    color: #000;
+    padding: 5px 5px 5px 20px;
+    border: 2px solid #ccc;
+    width: 23%;
+    height: 30px;
+    border-radius: 5px;
+}
+.werew:hover,.were:hover{
+	background: #32AAF7;
+}
+#ewr{
+	margin-top: -2px;
+}
+#showdd{
+	margin-top: 20px;
+}

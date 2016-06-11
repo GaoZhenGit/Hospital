@@ -37,9 +37,11 @@ $(document).ready(function() {
 				password : b
 			}, function(data, status) {
 				if (status == 'success') {
-					var arrStr = document.cookie.split(";");
-					alert(arrStr[0]);
-					window.location.href = "/Hospital/Register.jsp"
+					if (data == 'success') {
+						window.location.href = "/Hospital/guahao.html"
+					}else{
+						alert("密码错误");
+				}
 				}
 			});
 		}
