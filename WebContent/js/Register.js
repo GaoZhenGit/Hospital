@@ -28,7 +28,7 @@ $(document).ready(function() {
 			}, function(data, status) {
 				if (status == 'success') {
 					if (data == 'success') {
-						window.location.href = "/Hospital/guahao.html"
+						window.location.href = "/Hospital/guahao.jsp"
 						//alert("注册成功");
 					} else {
 						alert("注册失败");

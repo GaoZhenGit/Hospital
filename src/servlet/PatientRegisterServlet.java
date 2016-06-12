@@ -58,10 +58,10 @@ public class PatientRegisterServlet extends BaseServlet {
 			try {
 				Dao.save(patient);
 				System.out.println("success");
-//				HttpSession session = req.getSession(true);
-//				session.setMaxInactiveInterval(30000);
-//				session.setAttribute("patient",
-//						Dao.getByName(name, Patient.class).getId());
+				HttpSession session = req.getSession(true);
+				session.setMaxInactiveInterval(30000);
+				session.setAttribute("patient",
+						Dao.getByName(name, Patient.class).getId());
 				// response.sendRedirect(request.getContextPath() +
 				// "/HospitalPage.jsp");
 				resp.getWriter().append("success");

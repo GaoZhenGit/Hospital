@@ -26,11 +26,11 @@ public class SelectHospitalServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8"); 
-		name=req.getParameter("name");
+		name=req.getParameter("words");
 		if(null!=name){
 			hospitals=HispitalManage.getHospitalByName(name);
 		}
-		RequestDispatcher rd=getServletContext().getRequestDispatcher("/Register.jsp");
+		RequestDispatcher rd=getServletContext().getRequestDispatcher("/guahao.jsp");
 		req.setAttribute("hospitals", hospitals);
 		rd.forward(req, resp);
 	}	

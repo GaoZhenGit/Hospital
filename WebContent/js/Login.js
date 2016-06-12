@@ -38,9 +38,10 @@ $(document).ready(function() {
 			}, function(data, status) {
 				if (status == 'success') {
 					if (data == 'success') {
-						window.location.href = "/Hospital/guahao.html"
+						window.location.href = "/Hospital/guahao.jsp"
 					}else{
 						alert("密码错误");
+						//window.location.href = "/Hospital/Login.html"
 				}
 				}
 			});

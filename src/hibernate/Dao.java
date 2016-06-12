@@ -151,4 +151,21 @@ public class Dao {
 		session.close();
 		return result;
 	}
+	
+	public static TimeQuantum getTime(String time) {
+		String[] times = time.split(":");
+		if(times.length != 2) {
+			return null;
+		}
+		List<TimeQuantum> timeQuantums = getAll(TimeQuantum.class);
+		int hour = Integer.parseInt(times[0]);
+		times[1]=times[1].substring(0,times[1].length()-1);
+		int min = Integer.parseInt(times[1]);
+		for (TimeQuantum tq:timeQuantums) {
+			if(tq.getHour() == hour && tq.getMinute() == min) {
+				return tq;
+			}
+		}
+		return null;
+	}
 }

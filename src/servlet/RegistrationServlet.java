@@ -39,7 +39,7 @@ public class RegistrationServlet extends BaseServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		Patient patient = (Patient) request.getSession(true).getAttribute("patient");
-
+		
 		if (patient == null) {
 			back(response);
 			return;

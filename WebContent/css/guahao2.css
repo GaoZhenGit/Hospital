@@ -4,9 +4,10 @@
 #showdd{
 	display: block;
 	display: inline-block;
-	width: 600px;
+	width: 1000px;
     margin: 0 auto;
     overflow: hidden;
+    margin-top: 20px;
 }
 #cooless{
 	width: 800px;
@@ -48,6 +49,21 @@
 #ewr{
 	margin-top: -2px;
 }
-#showdd{
-	margin-top: 20px;
+
+#dsffs{
+    display: inline-block;
+    margin-top: -15px;
+}
+#haosf{
+    display: inline-block;
+    margin-left: 100px;
+    width: 500px;
+    padding-top: 5px;
+}
+#dfsfss{
+    width: 1200px;
+    height: 600px;
+}
+#haonim{
+    margin-left: 310px;
 }
