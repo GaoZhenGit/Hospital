@@ -306,23 +306,23 @@ ul{
 
 /*------------------------------------------------footer--------------------*/
 #footerMain{
+	bottom:0px;
 	width:50%;
-	height:141px;
+	height:60px;
 	border-top:#EEEEEE solid 4px;
 	background-color:#FBFBFB;
 	color:#000;
 	margin-left: 0px;
-	position: absolute;  bottom: 0;
-}
+	bottom: 0px;
+	} 
+
 #footer{
 	width:776px;
 	margin:0 auto;
 	height:141px;
-	position:relative;
 }
 #footer ul{
 	width:776px;
-	position:absolute;
 	left:0;
 	top:19px;
 }
@@ -344,10 +344,9 @@ ul{
 }
 #footer p.copyright{
 	font:normal 11px/22px Arial, Helvetica, sans-serif;
-	position:absolute;
-	left:242px;
+	margin-left:142px;
 	top:40px;
-	width:261px;
+	width:400px;
 	color:#970000;
 	background-color:inherit;
 }
@@ -356,7 +355,6 @@ ul{
 	background:url(../images/xhtml_bg.gif) 0 0 no-repeat;
 	width:98px;
 	height:21px;
-	position:absolute;
 	left:267px;
 	top:70px;
 }
@@ -368,7 +366,6 @@ ul{
 	background:url(../images/css_bg.gif) 0 0 no-repeat;
 	width:98px;
 	height:21px;
-	position:absolute;
 	left:373px;
 	top:70px;
 }

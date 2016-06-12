@@ -31,13 +31,14 @@
 		doctor : ok1,
 		time : ok
 	},function(data, status) {
+		console.log(data);
 		if (status == 'success') {
 			if (data == 'success') {
-				alert("挂号成功")
-				window.location.href = "/Hospital/guahao.jsp"
+				console.log("挂号成功");
+				//window.location.href = "/Hospital/guahao.jsp"
 			} else {
-				window.location.href = "/Hospital/guahao2.jsp"
-				alert("该时间段人数已满")
+				//window.location.href = "/Hospital/guahao2.jsp"
+				console.log("该时间段人数已满");
 			}
 		}
 	})

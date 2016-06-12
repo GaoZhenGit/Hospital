@@ -28,21 +28,65 @@
   //   $(this).parent().parent().remove();
   // }
     function deRow(obj){
-    var yse=window.confirm("您确认取消这个预约");
-    if(yse==true){
-      obj.parentNode.parentNode.parentNode.remove();}
+    var yse=window.confirm("您确认删除这个预约");
+    //alert( $("#idsis").attr("value"));
+    var id=$("#idsis").attr("value");
+    if(yes==true){
+    	$.post("/Hospital/DelectServlet", {
+			id : id,
+		},function(data, status) {
+			if (status == 'success') {
+				if (data == 'success') {
+					alert("删除成功")
+					window.location.href = "/Hospital/perchuse.jsp"
+				} else {
+					alert("删除失败，请重新尝试")
+					window.location.href = "/Hospital/perchuse.jsp"
+
+				}
+			}
+		})
+    }
+    //if(yse==true){
+      //obj.parentNode.parentNode.parentNode.remove();}
     }
 
   function delRow(obj){
     var yse=window.confirm("您确认支付预约");
+    var id=$("#idsis").attr("value");
     if(yse==true)baga();
-    if(yse==true){
-      obj.parentNode.innerHTML="已支付";
-      obj.remove()
+    if(yse==true){	
+      //obj.parentNode.innerHTML="已支付";
+      //obj.remove()
       // var html="<th >预约费用</th>";
       
       // obj.parentNode.parentNode.parentNode.remove();
     }
+    function buafds(){
+        var account = $("#txtName1").val();
+        var password = $("#txtPwd").val();
+        var id=$("#idsis").attr("value");
+        //alert(txtName1+txtPwd);
+        $.post("/Hospital/PayServlet", {
+        	account : account,
+        	password:password,
+        	id : id
+		},function(data, status) {
+			if (status == 'success') {
+				if (data == 'success') {
+					alert("支付成功")
+					window.location.href = "/Hospital/perchuse.jsp"
+				} else {
+					alert("支付失败，请重新尝试")
+					window.location.href = "/Hospital/perchuse.jsp"
+
+				}
+			}
+		})
+		alert("支付成功");
+        return false;
+}
+
 // var tr = this.getRowObj(obj);
 // if(tr != null){
 // tr.parentNode.removeChild(tr);
@@ -71,7 +115,6 @@
 <li><a href="#">个人资料</a></li>
 <li><a href="#">支持</a></li>
 <li><a href="#">博客</a></li>
-<li><a href="#">Cliet Testimonials</a></li>
 <li><a href="#">关于组织</a></li>
 <li><a href="#">我们的工作</a></li>
 <li class="noBdr"><a href="#">请联系</a></li>
@@ -158,7 +201,7 @@
   <th ><%=registrations.get(i).getDoctor().getDepartment().getName() %></th>
   <th ><%=registrations.get(i).getTimeQuantum().toString() %></th>
   <th ><%=registrations.get(i).getDoctor().getTitle().getFee() %> 元</th>
-  <th ><%if(!registrations.get(i).isHasPay()){ %><button  class="were" value="'dsfs"  onclick="delRow(this)" id="example">支付</button><%} %>
+  <th id="idsis" value=<%=registrations.get(i).getId() %>><%if(!registrations.get(i).isHasPay()){ %><button  class="were" value="'dsfs"  onclick="delRow(this)" id="example">支付</button><%} %>
        <button  class="were" value="'dsfs"  onclick="deRow(this)">删除</button>
   </th>
   </tr>
@@ -194,7 +237,7 @@
   </div>
 </div>
 <div id="LoginBox1">
-      <form action="" method="post" charset="utf8">
+      <form action="" method="" charset="utf8">
         <div class="row1">
             支付窗口<a href="" title="关闭窗口" class="close_btn" id="closeBtn1">×</a>
         </div>
@@ -206,14 +249,15 @@
         <div class="row">
             <label> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp密码：</label> 
             <span class="inputBox">
-             <input type="password" id="txtName1" required="required" placeholder="password" name="name" />
+             <input type="password" id="txtPwd" required="required" placeholder="password" name="name" />
         </div>
         <div class="row">
-             <button type="submit" id="loginbtn">确认</button>
-       <button onclick="busasd()">取消</button>
+             <button type="submit" id="loginbtn" onclick="return buafds()">确认<tton>
+       <button onclick="busasd()">取消<tton>
         </div>
 
         </form>
+
     </div>
 <!--footer end -->
 <!-- <div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div> -->
