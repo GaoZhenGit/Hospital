@@ -23,6 +23,7 @@ public class DelectServlet extends BaseServlet{
 		Registration registration=Dao.getById(id, Registration.class);
 		try {
 			resp.getWriter().append("success");	
+			System.out.println("删除");
 			Dao.delete(registration);		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

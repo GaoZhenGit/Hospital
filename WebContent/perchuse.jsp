@@ -50,8 +50,7 @@
     //if(yse==true){
       //obj.parentNode.parentNode.parentNode.remove();}
     }
-
-  function delRow(obj){
+function delRow(obj){
     var yse=window.confirm("您确认支付预约");
     var id=$("#idsis").attr("value");
     if(yse==true)baga();
@@ -59,10 +58,9 @@
       //obj.parentNode.innerHTML="已支付";
       //obj.remove()
       // var html="<th >预约费用</th>";
-      
       // obj.parentNode.parentNode.parentNode.remove();
     }
-    function buafds(){
+	function buafds(){
         var account = $("#txtName1").val();
         var password = $("#txtPwd").val();
         var id=$("#idsis").attr("value");
@@ -79,7 +77,6 @@
 				} else {
 					alert("支付失败，请重新尝试")
 					window.location.href = "/Hospital/perchuse.jsp"
-
 				}
 			}
 		})

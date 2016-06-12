@@ -161,7 +161,7 @@ time=Dao.getAll(TimeQuantum.class);%>
 				<select id="time" name="time">
 				<%
 				for(TimeQuantum t:time){ %>
-      					<option value="11"><%=t.toString()%> </option>
+      					<option value=<%=t.toString() %>><%=t.toString()%> </option>
       					<%} %>
       
     </select>
